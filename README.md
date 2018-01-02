@@ -5,16 +5,16 @@
 * [generator-generator-lib](#generator-generator-lib)
   * [FAQ](#faq)
   * [API](#api)
+    * [File Types](#file-types)
     * [Simple](#simple)
       * [write(fName, fContent, fType)](#writefname-fcontent-ftype)
-      * [read(filePath)](#readfilepath)
-      * [update](#update)
-      * [delete](#delete)
+      * [read(fPath)](#readfpath)
+      * [update(fPath, fContent)](#updatefpath-fcontent)
+      * [delete(fPath)](#deletefpath)
     * [Detailed Examples](#detailed-examples)
       * [File](#file)
       * [Directory](#directory)
       * [Content](#content)
-    * [File Types](#file-types)
 
 <!-- TOC END -->
 
@@ -28,10 +28,22 @@
 
 ## API
 
-* [Examples](#examples)
-* [Usage](#usage)
+* [File Types](#file-types) - All possible file types
+* [Simple](#examples) - Abstracted, recommended API
+* [Complex](#usage) - Core functionality which you can extend yourself
 
 ---
+
+### File Types
+
+> Below are all of the possible file types
+
+| What     | Why                                               |
+| :------- | :------------------------------------------------ |
+| Empty    | Some men just want to watch the world burn        |
+| Template | Easily replace variables within given text        |
+| Config   | Manage configs to track files created and deleted |
+| Symlink  | Connect things with other things                  |
 
 ### Simple
 
@@ -45,15 +57,30 @@
 | `fContent` | string       |                                           |
 | `fType`    | enum::string | `template`, `config`, or `file` (default) |
 
-#### read(filePath)
+#### read(fPath)
+
+| Parameter | Type   | Example            |
+| :-------- | :----- | :----------------- |
+| `fPath`   | string | `foo/bar/file.ext` |
+
+#### update(fPath, fContent)
 
 | Parameter  | Type   | Example            |
 | :--------- | :----- | :----------------- |
-| `filePath` | string | `foo/bar/file.ext` |
+| `fPath`    | string | `foo/bar/file.ext` |
+| `fContent` | string |                    |
 
-#### update
+#### delete(fPath)
 
-#### delete
+| Parameter | Type         | Example                       |
+| :-------- | :----------- | :---------------------------- |
+| `fPath`   | enum::string | `directory`, `file` (default) |
+
+##### Examples
+
+| Call | Result |
+| :--- | :----- |
+
 
 ### Detailed Examples
 
@@ -88,11 +115,3 @@
 | `file.ext` | Template | File creates parseable config without conf store  |
 
 ---
-
-### File Types
-
-> Below are all of the possible file types
-
-| What | Why | How |
-| :--- | :-- | :-- |
-
