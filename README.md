@@ -15,8 +15,7 @@
       * [File](#file)
       * [Directory](#directory)
       * [Content](#content)
-
-<!-- TOC END -->
+* [generator-generator-lib](#generator-generator-lib)
 
 ## FAQ
 
@@ -28,9 +27,9 @@
 
 ## API
 
-* [File Types](#file-types) - All possible file types
+* [File Types](#file-types) - All possible generated file types
 * [Simple](#examples) - Abstracted, recommended API
-* [Complex](#usage) - Core functionality which you can extend yourself
+* [Complex](#usage) - Core functionality whn extend yourself
 
 ---
 
@@ -51,11 +50,11 @@
 
 #### write(fName, fContent, fType)
 
-| Parameter  | Type         | Example                                   |
-| :--------- | :----------- | :---------------------------------------- |
-| `fPath`    | string       | `foo/bar/file.ext`                        |
-| `fContent` | string       |                                           |
-| `fType`    | enum::string | `template`, `config`, or `file` (default) |
+| Parameter  | Type         | Example                                            |
+| :--------- | :----------- | :------------------------------------------------- |
+| `fPath`    | string       | `foo/bar/file.ext`                                 |
+| `fContent` | string       |                                                    |
+| `fType`    | enum::string | `empty`, `template`, `config`, or `file` (default) |
 
 #### read(fPath)
 
@@ -68,19 +67,29 @@
 | Parameter  | Type   | Example            |
 | :--------- | :----- | :----------------- |
 | `fPath`    | string | `foo/bar/file.ext` |
-| `fContent` | string |                    |
-
-#### delete(fPath)
-
-| Parameter | Type         | Example                       |
-| :-------- | :----------- | :---------------------------- |
-| `fPath`   | enum::string | `directory`, `file` (default) |
+| `fContent` | mixed  |                    |
 
 ##### Examples
 
-| Call | Result |
-| :--- | :----- |
+| Call                                      | Result                            |
+| :---------------------------------------- | :-------------------------------- |
+| `update('/foo/bar/file.ext', newContent)` | => `/foo/bar/file.ext` is updated |
 
+#### delete(fPath)
+
+| Parameter | Type   | Example            |
+| :-------- | :----- | :----------------- |
+| `fPath`   | string | `foo/bar/file.ext` |
+
+> The type (`directory`, `file`) is intuited based on whether or not it has an extension. In the case of files, be sure to include extensions. In the case of directories, all files within will be deleted as well.
+> Initially I thought of adding an `fType` parameter here, but I don't see any reason why you would ever want to try to delete a directory without deleting all the content therein. Perhaps in the future there could be a use case for moving the files to a parent directory instead of automatically deleting them?
+
+##### Examples
+
+| Call                         | Result                                   |
+| :--------------------------- | :--------------------------------------- |
+| `delete('foo/bar/file.ext')` | => `foo/bar/file.ext` is deleted         |
+| `delete('foo/bar/')`         | => `foo/bar/` dir is recursively deleted |
 
 ### Detailed Examples
 
