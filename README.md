@@ -21,11 +21,11 @@
 
 ## API
 
-| What                          | Why                                    |
-| :---------------------------- | :------------------------------------- |
-| [File Types](#file-types)     | All possible generated file types      |
-| [Abstraction](#abstractedapi) | Abstracted, recommended API            |
-| [Detail](#detailedapi)        | Core functionality whn extend yourself |
+| What                          | Why                                 |
+| :---------------------------- | :---------------------------------- |
+| [File Types](#file-types)     | All possible generated file types   |
+| [Abstraction](#abstractedapi) | Abstracted, recommended API         |
+| [Detail](#detailedapi)        | Core functionality being abstracted |
 
 ---
 
