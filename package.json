@@ -1,0 +1,13 @@
+{
+  "name": "generator-generator-lib",
+  "version": "0.1.0",
+  "description": "Generate raw assets for other generators",
+  "main": "index.js",
+  "repository": "git@alechp:servexyz/generator-generator-lib",
+  "author": "alechp <me@alechp.com>",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.3.0",
+    "make-dir": "^1.1.0"
+  }
+}
