@@ -45,20 +45,28 @@
 ```js
 {
   "fType": {
-    "file": "",
+    "file": {
+      "content": string
+    },
     "template": {
-      "keys": variablesToReplace,
-      "values": contentToReplaceVariablesWith,
+      "content": {
+        "keys": variablesToReplace,
+        "values": contentToReplaceVariablesWith,
+      }
       "track": false
     },
     "config": {
-      "keys": variablesToReplace,
-      "values": contentToReplaceVariablesWith
+      "content": {
+        "keys": variablesToReplace,
+        "values": contentToReplaceVariablesWith
+      }
       "track": true
     },
     "symlink": {
-      "src": "/path/to/original/file",
-      "dest": "./created-symlink"
+      "content": {
+        "src": "/path/to/original/file",
+        "dest": "./created-symlink"
+      }
     }
   }
 }
