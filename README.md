@@ -1,14 +1,15 @@
 # generator-generator-lib
 
-<!-- TOC START min:1 max:4 link:true update:true -->
+<!-- TOC START min:1 max:3 link:true update:true -->
 
 * [generator-generator-lib](#generator-generator-lib)
   * [FAQ](#faq)
   * [API](#api)
     * [File Types](#file-types)
-    * [Abstraction](#abstraction)
-      * [write](#write)
-* [generator-generator-lib](#generator-generator-lib)
+    * [Abstracted::API](#abstractedapi)
+    * [Detailed::API](#detailedapi)
+
+<!-- TOC END -->
 
 ## FAQ
 
@@ -20,9 +21,11 @@
 
 ## API
 
-* [File Types](#file-types) - All possible generated file types
-* [Simple](#examples) - Abstracted, recommended API
-* [Complex](#usage) - Core functionality whn extend yourself
+| What                          | Why                                    |
+| :---------------------------- | :------------------------------------- |
+| [File Types](#file-types)     | All possible generated file types      |
+| [Abstraction](#abstractedapi) | Abstracted, recommended API            |
+| [Detail](#detailedapi)        | Core functionality whn extend yourself |
 
 ---
 
@@ -61,12 +64,14 @@
 }
 ```
 
-### Abstraction
+### Abstracted::API
 
 > The functions below are an amalgam of file, directory and content manipulation. They work with respective [file types](#file-types).
 
 * [write](#write)
-* [read](#)
+* [read](#read)
+* [update](#update)
+* [delete](#delete)
 
 #### write
 
@@ -144,7 +149,7 @@ Going to save this for last. Not even totally sure it's necessary at this point 
 
 ---
 
-### Implementation Detail
+### Detailed::API
 
 > Below is sample output rendered independently by each file. This is what you can produce without using the abstracted API's.
 
@@ -177,7 +182,3 @@ Going to save this for last. Not even totally sure it's necessary at this point 
 | `file.ext` | Template | File creates parseable config without conf store  |
 
 ---
-
-```
-
-```
