@@ -6,15 +6,8 @@
   * [FAQ](#faq)
   * [API](#api)
     * [File Types](#file-types)
-    * [Simple](#simple)
-      * [write(fName, fContent, fType)](#writefname-fcontent-ftype)
-      * [read(fPath)](#readfpath)
-      * [update(fPath, fContent)](#updatefpath-fcontent)
-      * [delete(fPath)](#deletefpath)
-    * [Detailed Examples](#detailed-examples)
-      * [File](#file)
-      * [Directory](#directory)
-      * [Content](#content)
+    * [Abstraction](#abstraction)
+      * [write](#write)
 * [generator-generator-lib](#generator-generator-lib)
 
 ## FAQ
@@ -39,16 +32,45 @@
 
 | What     | Why                                               |
 | :------- | :------------------------------------------------ |
-| Empty    | Some men just want to watch the world burn        |
+| Plain    | Accept standard string (or empty string)          |
 | Template | Easily replace variables within given text        |
 | Config   | Manage configs to track files created and deleted |
 | Symlink  | Connect things with other things                  |
 
-### Simple
+> Below is a flushed out list of file types and their values
+
+```js
+{
+  "fType": {
+    "file": "",
+    "template": {
+      "keys": variablesToReplace,
+      "values": contentToReplaceVariablesWith,
+      "track": false
+    },
+    "config": {
+      "keys": variablesToReplace,
+      "values": contentToReplaceVariablesWith
+      "track": true
+    },
+    "symlink": {
+      "src": "/path/to/original/file",
+      "dest": "./created-symlink"
+    }
+  }
+}
+```
+
+### Abstraction
 
 > The functions below are an amalgam of file, directory and content manipulation. They work with respective [file types](#file-types).
 
-#### write(fName, fContent, fType)
+* [write](#write)
+* [read](#)
+
+#### write
+
+> write(fName, fContent, fType)
 
 | Parameter  | Type         | Example                                            |
 | :--------- | :----------- | :------------------------------------------------- |
@@ -56,18 +78,44 @@
 | `fContent` | string       |                                                    |
 | `fType`    | enum::string | `empty`, `template`, `config`, or `file` (default) |
 
-#### read(fPath)
+##### Examples
+
+| Call                                           | Result                        |
+| :--------------------------------------------- | :---------------------------- |
+| `write('foo/bar/file.ext', content, template)` | => `foo/bar/file.ext` created |
+
+---
+
+#### read
+
+> read(fPath)
 
 | Parameter | Type   | Example            |
 | :-------- | :----- | :----------------- |
 | `fPath`   | string | `foo/bar/file.ext` |
 
-#### update(fPath, fContent)
+##### Examples
 
-| Parameter  | Type   | Example            |
-| :--------- | :----- | :----------------- |
-| `fPath`    | string | `foo/bar/file.ext` |
-| `fContent` | mixed  |                    |
+| Call               | Result |
+| :----------------- | :----- |
+| `foo/bar/file.ext` | ?      |
+
+---
+
+#### update
+
+> update(fPath, fType, fContent)
+
+```
+Update is likely going to be the most difficult to implement given that it will need to take both concatenation and interpolation into account...
+Going to save this for last. Not even totally sure it's necessary at this point TBH.
+```
+
+| Parameter  | Type         | Example                                   |
+| :--------- | :----------- | :---------------------------------------- |
+| `fPath`    | string       | `foo/bar/file.ext`                        |
+| `fContent` | mixed        |                                           |
+| `fType`    | enum::string | `template`, `config`, or `file` (default) |
 
 ##### Examples
 
@@ -75,14 +123,15 @@
 | :---------------------------------------- | :-------------------------------- |
 | `update('/foo/bar/file.ext', newContent)` | => `/foo/bar/file.ext` is updated |
 
-#### delete(fPath)
+---
+
+#### delete
+
+> delete(fPath)
 
 | Parameter | Type   | Example            |
 | :-------- | :----- | :----------------- |
 | `fPath`   | string | `foo/bar/file.ext` |
-
-> The type (`directory`, `file`) is intuited based on whether or not it has an extension. In the case of files, be sure to include extensions. In the case of directories, all files within will be deleted as well.
-> Initially I thought of adding an `fType` parameter here, but I don't see any reason why you would ever want to try to delete a directory without deleting all the content therein. Perhaps in the future there could be a use case for moving the files to a parent directory instead of automatically deleting them?
 
 ##### Examples
 
@@ -91,7 +140,11 @@
 | `delete('foo/bar/file.ext')` | => `foo/bar/file.ext` is deleted         |
 | `delete('foo/bar/')`         | => `foo/bar/` dir is recursively deleted |
 
-### Detailed Examples
+---
+
+---
+
+### Implementation Detail
 
 > Below is sample output rendered independently by each file. This is what you can produce without using the abstracted API's.
 
@@ -124,3 +177,7 @@
 | `file.ext` | Template | File creates parseable config without conf store  |
 
 ---
+
+```
+
+```
