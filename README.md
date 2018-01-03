@@ -45,7 +45,7 @@
 ```js
 {
   "fType": {
-    "file": {
+    "plain": {
       "content": string
     },
     "template": {
@@ -188,5 +188,6 @@ Going to save this for last. Not even totally sure it's necessary at this point 
 | `file.ext` | Plain    | File is populated UTF-8 via initial write-file cb |
 | `file.ext` | Config   | File creates parseable config with conf store     |
 | `file.ext` | Template | File creates parseable config without conf store  |
+| `file.ext` | Symlink  | Symlink is created, pointing to dest file         |
 
 ---
