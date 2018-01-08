@@ -3,10 +3,10 @@
  * @Date:   2018-01-08T14:16:52-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-08T14:35:30-08:00
+ * @Last modified time: 2018-01-08T14:44:26-08:00
  */
-
-const db = require("../config/db.js");
+const { T_HISTORY } = require("../config/paths.js");
+const db = require("../config/db.js")(T_HISTORY);
 
 test("db write/reads properly", () => {
   // Set some defaults
