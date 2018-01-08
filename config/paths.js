@@ -3,7 +3,7 @@
  * @Date:   2018-01-08T14:13:42-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-08T14:44:03-08:00
+ * @Last modified time: 2018-01-08T14:47:30-08:00
  */
 const path = require("path");
 const DETAILED_HISTORY_DB = path.join(__dirname, "history.json");
@@ -12,12 +12,15 @@ const DETAILED_DIRECTORY = path.join(__dirname, "../src/directory.js");
 const DETAILED_FILE = path.join(__dirname, "../src/file.js");
 
 const TEST_HISTORY_DB = path.join(__dirname, "sandbox.history.json");
+
 /*
   d = detailed
   a = abstracted
+  t = test
 
-  Checkout README for breakdown of Detailed vs. Abstracted
+  NOTE: Checkout README for breakdown of Detailed vs. Abstracted
 */
+
 module.exports = {
   T_HISTORY: TEST_HISTORY_DB,
   D_HISTORY: DETAILED_HISTORY_DB,
