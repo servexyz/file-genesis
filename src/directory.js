@@ -3,7 +3,7 @@
  * @Date:   2018-01-02T09:33:06-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-02T10:45:49-08:00
+ * @Last modified time: 2018-01-08T10:16:59-08:00
  */
 
 const mkdirp = require("make-dir");
@@ -14,3 +14,19 @@ export default function createDirectory(name) {
     log(`Directory created. ${chalk.green(path)}`);
   });
 }
+
+/*
+  ----------------------------------
+  Existence questions...
+  ----------------------------------
+  * Does root directory exist ?
+  * Does parent directory exist?
+  * Does child directory exist ?
+
+  ----------------------------------
+  Existence answers...
+  ----------------------------------
+  * Create parent directory
+  * Create child(ren) directories
+
+*/

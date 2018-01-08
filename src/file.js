@@ -3,38 +3,56 @@
  * @Date:   2018-01-02T09:33:13-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-04T14:13:25-08:00
+ * @Last modified time: 2018-01-08T12:00:36-08:00
  */
 
-const createFile = require("create-file");
-const deleteFile = require("delete");
+const fs = require("fs");
 const chalk = require("chalk");
 const log = console.log;
 
 /* @bool */
-function cFilePlain(name, content) {
-  let bCreationFlag = null;
-  createFile(name, content, err => {
-    if (err) {
-      log(
-        `${chalk.red("Failed to writeFile")} \n File: ${chalk.blue(
-          name
-        )} \n Error: ${chalk.red(err)}`
-      );
-      return false;
-    } else {
-      log(`${chalk.green(name)} was created.`);
-      return true;
-    }
+
+// Root file creator function
+function prCreateFile(name, content) {
+  // Will create file in cwd unless path is specified in name
+  return new Promise((resolve, reject) => {
+    log(`Name inside promise: ${chalk.green(name)}`);
+    fs.writeFile(name, content, "utf8", err => {
+      if (err) {
+        reject(err);
+      } else {
+        log(`Name inside fs: ${chalk.yellow(name)}`);
+        resolve(name);
+      }
+    });
   });
-  // return bCreationFlag;
 }
-function cFile(name, type, content) {
+
+//Default file creator
+function cFilePlain(filename, content) {
+  prCreateFile(filename, content)
+    .then(name => {
+      log(`Created ${chalk.blue(name)}`);
+      return true;
+    })
+    .catch(err => {
+      `cFilePlain failed. ${chalk.red(err)}`;
+      return false;
+    });
+
+  log(`Finished cFilePlain`);
+}
+function cFileTemplate(name, content) {}
+function cFileConfig(name, content) {}
+function cFile(name, content, type) {
   switch (type) {
     case "plain":
-      return cFilePlain(name, content);
-      log("Plain file created");
-      break;
+      let flag = cFilePlain(name, content);
+      return flag;
+    case "template":
+      return cFileTemplate(name, content);
+    case "config":
+      return cFileConfig(name, content);
     default:
       log("Please specify file type.");
       break;
@@ -57,6 +75,5 @@ function dFile(names) {
 }
 
 module.exports = {
-  createFile: cFile,
-  deleteFile: dFile
+  createFile: cFile
 };
