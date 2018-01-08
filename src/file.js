@@ -3,7 +3,7 @@
  * @Date:   2018-01-02T09:33:13-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-08T12:00:36-08:00
+ * @Last modified time: 2018-01-08T14:00:28-08:00
  */
 
 const fs = require("fs");
@@ -33,22 +33,18 @@ function cFilePlain(filename, content) {
   prCreateFile(filename, content)
     .then(name => {
       log(`Created ${chalk.blue(name)}`);
-      return true;
+      return name;
     })
     .catch(err => {
-      `cFilePlain failed. ${chalk.red(err)}`;
-      return false;
+      log(`cFilePlain failed. ${chalk.red(err)}`);
     });
-
-  log(`Finished cFilePlain`);
 }
 function cFileTemplate(name, content) {}
 function cFileConfig(name, content) {}
 function cFile(name, content, type) {
   switch (type) {
     case "plain":
-      let flag = cFilePlain(name, content);
-      return flag;
+      return cFilePlain(name, content);
     case "template":
       return cFileTemplate(name, content);
     case "config":
