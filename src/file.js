@@ -3,29 +3,33 @@
  * @Date:   2018-01-02T09:33:13-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-08T14:00:28-08:00
+ * @Last modified time: 2018-01-08T15:39:58-08:00
  */
 
 const fs = require("fs");
 const chalk = require("chalk");
+const path = require("path");
 const log = console.log;
+
+const { D_HISTORY } = require("../config/paths.js");
+const db = require(path.join(__dirname, "../config/db.js"))(D_HISTORY);
 
 /* @bool */
 
 // Root file creator function
 function prCreateFile(name, content) {
-  // Will create file in cwd unless path is specified in name
+  // Will create file in cwd unless path is specified in filename
   return new Promise((resolve, reject) => {
-    log(`Name inside promise: ${chalk.green(name)}`);
     fs.writeFile(name, content, "utf8", err => {
       if (err) {
         reject(err);
       } else {
-        log(`Name inside fs: ${chalk.yellow(name)}`);
         resolve(name);
       }
     });
   });
+  let createdFile = String(path.basename(filename));
+  db.set("file.last", createdFile).write();
 }
 
 //Default file creator

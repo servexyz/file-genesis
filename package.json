@@ -17,10 +17,7 @@
   },
   "jest": {
     "verbose": true,
-    "bail": true,
-    "modulePathIgnorePatterns": [
-      ".sandbox",
-      "node_modules"
-    ]
+    "bail": false,
+    "modulePathIgnorePatterns": [".sandbox", "node_modules"]
   }
 }

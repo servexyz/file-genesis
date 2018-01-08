@@ -3,7 +3,7 @@
  * @Date:   2018-01-08T14:16:52-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-08T14:44:26-08:00
+ * @Last modified time: 2018-01-08T15:11:35-08:00
  */
 const { T_HISTORY } = require("../config/paths.js");
 const db = require("../config/db.js")(T_HISTORY);

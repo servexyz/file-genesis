@@ -3,19 +3,28 @@
  * @Date:   2018-01-04T12:43:32-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-08T14:26:57-08:00
+ * @Last modified time: 2018-01-08T15:41:48-08:00
  */
 
 const log = console.log;
 const path = require("path");
-const sandbox = path.join(__dirname, "./.sandbox");
+const chalk = require("chalk");
+const paths = require(path.join(__dirname, "../config/paths.js"));
 
-test("File successfully created", () => {
+function createTestFile(fileName) {
   const { createFile } = require("../src/file.js");
+  log(`Paths sand: ${paths.T_SANDBOX}`);
+  let fPath = `${paths.T_SANDBOX}/${fileName}`;
+  createFile(fPath, "empty file", "plain");
+}
+function getLastFileCreated() {
+  let history = require(paths.D_HISTORY);
+  let lastFileAddedToHistory = history.file.last;
+  return lastFileAddedToHistory;
+}
+test("File successfully created", () => {
   let fName = `foo.bar`;
-  log(`Sandbox: ${sandbox}`);
-  let fPath = `${sandbox}/${fName}`;
-  createFile(fPath, "", "plain");
-  // TODO: Use lowdb to test for last created file
-  expect(true);
+  createTestFile(fName);
+  let createdFile = getLastFileCreated();
+  expect(createdFile).toBe(fName);
 });
