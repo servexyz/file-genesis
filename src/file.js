@@ -3,7 +3,7 @@
  * @Date:   2018-01-02T09:33:13-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-08T15:39:58-08:00
+ * @Last modified time: 2018-01-08T16:08:58-08:00
  */
 
 const fs = require("fs");
@@ -16,7 +16,7 @@ const db = require(path.join(__dirname, "../config/db.js"))(D_HISTORY);
 
 /* @bool */
 
-// Root file creator function
+// Root file creator function.
 function prCreateFile(name, content) {
   // Will create file in cwd unless path is specified in filename
   return new Promise((resolve, reject) => {
@@ -43,12 +43,15 @@ function cFilePlain(filename, content) {
       log(`cFilePlain failed. ${chalk.red(err)}`);
     });
 }
-function cFileTemplate(name, content) {}
-function cFileConfig(name, content) {}
+function cFileConfig(filename, config) {}
+function cFileTemplate(filename, content) {}
+function cFileSymlink(target, destination) {}
 function cFile(name, content, type) {
   switch (type) {
     case "plain":
       return cFilePlain(name, content);
+    case "symlink":
+      return cFileSymlink(name, content);
     case "template":
       return cFileTemplate(name, content);
     case "config":
