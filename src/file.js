@@ -3,7 +3,7 @@
  * @Date:   2018-01-02T09:33:13-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-08T16:08:58-08:00
+ * @Last modified time: 2018-01-09T20:33:25-08:00
  */
 
 const fs = require("fs");
@@ -12,11 +12,11 @@ const path = require("path");
 const log = console.log;
 
 const { D_HISTORY } = require("../config/paths.js");
-const db = require(path.join(__dirname, "../config/db.js"))(D_HISTORY);
+const db = require(path.join(__dirname, "./db.js"))(D_HISTORY);
 
-/* @bool */
-
-// Root file creator function.
+/***************************************************
+Helper functions
+***************************************************/
 function prCreateFile(name, content) {
   // Will create file in cwd unless path is specified in filename
   return new Promise((resolve, reject) => {
@@ -31,8 +31,22 @@ function prCreateFile(name, content) {
   let createdFile = String(path.basename(filename));
   db.set("file.last", createdFile).write();
 }
+function prCreateSymlink(target, destination) {
+  return new Promise((resolve, reject) => {
+    fs.symlink(target, destination, err => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(destination);
+      }
+    });
+  });
+}
 
-//Default file creator
+/***************************************************
+Creator Functions
+***************************************************/
+// Helpers
 function cFilePlain(filename, content) {
   prCreateFile(filename, content)
     .then(name => {
@@ -43,9 +57,12 @@ function cFilePlain(filename, content) {
       log(`cFilePlain failed. ${chalk.red(err)}`);
     });
 }
+
 function cFileConfig(filename, config) {}
 function cFileTemplate(filename, content) {}
 function cFileSymlink(target, destination) {}
+
+//Primary
 function cFile(name, content, type) {
   switch (type) {
     case "plain":
@@ -61,6 +78,7 @@ function cFile(name, content, type) {
       break;
   }
 }
+
 function dFile(names) {
   deleteFile([...name], (err, deleted) => {
     if (err) {
@@ -76,6 +94,8 @@ function dFile(names) {
     }
   });
 }
+
+//TODO: Create "uFile" function which updates permissions and/or ownership
 
 module.exports = {
   createFile: cFile

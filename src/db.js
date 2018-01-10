@@ -3,8 +3,10 @@
  * @Date:   2018-01-08T14:34:34-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-08T14:45:41-08:00
+ * @Last modified time: 2018-01-09T20:34:54-08:00
  */
+
+// NOTE: This is not a generator. Helper file which can be used for history / logging purposes
 
 module.exports = function(databaseFile) {
   //Database dependency
