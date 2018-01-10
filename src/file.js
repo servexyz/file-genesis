@@ -3,7 +3,7 @@
  * @Date:   2018-01-02T09:33:13-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-10T13:55:43-08:00
+ * @Last modified time: 2018-01-10T15:29:32-08:00
  */
 
 const fs = require("fs");
@@ -20,20 +20,20 @@ Helper functions
 function basename(filepath) {
   return String(path.basename(filepath));
 }
-function canCreateFileHere(filepath) {
-  fs.access(filepath, err => {
-    if (err) {
-      if (err.code === "ENOENT") {
-        console.log("File doesn't already exist. You may create it.");
-        return Boolean(true);
-      }
-      throw err;
-    } else {
-      log(`File already exists. Abort.`);
-      return Boolean(false);
-    }
-  });
-}
+// function canCreateFileHere(filepath) {
+//   fs.access(filepath, err => {
+//     if (err) {
+//       if (err.code === "ENOENT") {
+//         console.log("File doesn't already exist. You may create it.");
+//         return Boolean(true);
+//       }
+//       throw err;
+//     } else {
+//       log(`File already exists. Abort.`);
+//       return Boolean(false);
+//     }
+//   });
+// }
 function prCreateFile(name, content) {
   return new Promise((resolve, reject) => {
     fs.writeFile(name, content, "utf8", err => {
@@ -48,25 +48,25 @@ function prCreateFile(name, content) {
   let createdFile = String(path.basename(name));
   db.set("file.last", createdFile).write();
 }
-function prCreateSymlink(destination, target) {
-  return new Promise((resolve, reject) => {
-    if (canCreateFileHere(destination)) {
-      log(`can indeed create file here`);
-      fs.symlink(target, destination, err => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(destination);
-        }
-      });
-    } else {
-      reject(`File ${chalk.blue(destination)} already exists.`);
-    }
-  });
-  let createdSymlink = String(path.basename(destination));
-  log(`Created symlink: ${createdSymlink}`);
-  db.set("symlink.last.destination", createdSymlink).write();
-}
+// function prCreateSymlink(destination, target) {
+//   return new Promise((resolve, reject) => {
+//     if (canCreateFileHere(destination)) {
+//       log(`can indeed create file here`);
+//       fs.symlink(target, destination, err => {
+//         if (err) {
+//           reject(err);
+//         } else {
+//           resolve(destination);
+//         }
+//       });
+//     } else {
+//       reject(`File ${chalk.blue(destination)} already exists.`);
+//     }
+//   });
+//   let createdSymlink = String(path.basename(destination));
+//   log(`Created symlink: ${createdSymlink}`);
+//   db.set("symlink.last.destination", createdSymlink).write();
+// }
 
 /***************************************************
 Creator Functions
