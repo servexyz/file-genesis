@@ -21,11 +21,6 @@
   "jest": {
     "verbose": true,
     "bail": false,
-    "modulePathIgnorePatterns": [
-      ".sandbox",
-      "node_modules",
-      "content.test.js",
-      "file.test.js"
-    ]
+    "modulePathIgnorePatterns": [".sandbox", "node_modules", "content.test.js"]
   }
 }

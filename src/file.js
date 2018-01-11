@@ -3,7 +3,7 @@
  * @Date:   2018-01-02T09:33:13-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-10T18:16:47-08:00
+ * @Last modified time: 2018-01-11T15:01:19-08:00
  */
 
 const fs = require("fs-extra");
@@ -11,8 +11,8 @@ const chalk = require("chalk");
 const path = require("path");
 const log = console.log;
 
-const { D_HISTORY } = require("../config/paths.js");
-const db = require(path.join(__dirname, "./db.js"))(D_HISTORY);
+const { C_HISTORY } = require("../config/paths.js");
+const db = require(path.join(__dirname, "./db.js"))(C_HISTORY);
 
 // https://www.npmjs.com/package/fs-extra
 /***************************************************

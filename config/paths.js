@@ -3,7 +3,7 @@
  * @Date:   2018-01-08T14:13:42-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-11T14:47:48-08:00
+ * @Last modified time: 2018-01-11T15:01:11-08:00
  */
 
 const path = require("path");
@@ -21,7 +21,7 @@ const TEST_TEMPLATES_SAMPLE = path.join(
 );
 
 //CONFIG
-const CONFIG_HISTORY_DB = path.join(__dirname, "history.json");
+const CONFIG_HISTORY_DB = path.join(__dirname, "./history.json");
 const CONFIG_TEMPLATES = path.join(__dirname, "../templates");
 const CONFIG_TEMPLATES_DUPLICATES = path.join(
   __dirname,
@@ -29,9 +29,9 @@ const CONFIG_TEMPLATES_DUPLICATES = path.join(
 );
 
 module.exports = {
+  C_HISTORY: CONFIG_HISTORY_DB,
   C_TEMPLATES: CONFIG_TEMPLATES,
   C_T_DUPLICATES: CONFIG_TEMPLATES_DUPLICATES,
-  C_HISTORY: CONFIG_HISTORY_DB,
   D_CONTENT: DETAILED_CONTENT,
   D_DIRECTORY: DETAILED_DIRECTORY,
   D_FILE: DETAILED_FILE,

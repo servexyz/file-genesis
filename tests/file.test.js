@@ -3,7 +3,7 @@
  * @Date:   2018-01-04T12:43:32-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-11T14:44:02-08:00
+ * @Last modified time: 2018-01-11T15:03:19-08:00
  */
 
 const log = console.log;
@@ -11,23 +11,22 @@ const path = require("path");
 const chalk = require("chalk");
 const paths = require(path.join(__dirname, "../config/paths.js"));
 
-function createTestFile(fileName) {
-  const { createFile } = require("../src/file.js");
-  log(`Paths sand: ${paths.T_SANDBOX}`);
-  let fPath = `${paths.T_SANDBOX}/${fileName}`;
-  createFile(fPath, "empty file", "plain");
-}
-function getLastFileCreated() {
-  let history = require(paths.D_HISTORY);
-  let lastFileAddedToHistory = history.file.last;
-  return lastFileAddedToHistory;
-}
+const { C_HISTORY } = require("../config/paths.js");
+const db = require("../src/db.js")(C_HISTORY);
+
+//TODO: Add smart toggle so that testing can be done in T_HISTORY and C_HISTORY...
+// * Tests should CR TEST_HISTORY_DB
+// * Production should CR CONFIG_HISTORY_DB
+//TODO: Move sandbox.history.json to lib/tests so there's no confusion
 
 test("File created", () => {
+  const { createFile } = require("../src/file.js");
   let fName = `foo.bar`;
-  createTestFile(fName);
-  let createdFile = getLastFileCreated();
-  expect(createdFile).toBe(fName);
+  let fPath = `${paths.T_SANDBOX}/${fName}`;
+  createFile(fPath, "empty file", "plain");
+  db.set("tests.lastFileCreated", fPath).write();
+  let lastFileCreated = String(db.get("tests.lastFileCreated"));
+  expect(lastFileCreated).toBe(fPath);
 });
 
 // test("Symlink created", () => {
