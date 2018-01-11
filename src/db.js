@@ -3,12 +3,11 @@
  * @Date:   2018-01-08T14:34:34-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-10T13:59:41-08:00
+ * @Last modified time: 2018-01-11T14:11:02-08:00
  */
 
-// NOTE: This is not a generator. Helper file which can be used for history / logging purposes
-const historyDefault = `
-  {
+module.exports = function(databaseFile) {
+  const historyDefault = `{
     "file": {
       "last": "empty"
     },
@@ -18,10 +17,7 @@ const historyDefault = `
         "target": "empty"
       }
     }
-  }
-`;
-// add defaults
-module.exports = function(databaseFile) {
+  }`;
   //Database dependency
   const low = require("lowdb");
 

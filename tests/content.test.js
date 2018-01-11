@@ -3,7 +3,7 @@
  * @Date:   2018-01-10T16:09:06-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-11T10:11:32-08:00
+ * @Last modified time: 2018-01-11T14:12:05-08:00
  */
 
 const log = console.log;

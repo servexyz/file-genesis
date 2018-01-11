@@ -22,7 +22,9 @@
     "bail": false,
     "modulePathIgnorePatterns": [
       ".sandbox",
-      "node_modules"
+      "node_modules",
+      "content.test.js",
+      "file.test.js"
     ]
   }
 }
