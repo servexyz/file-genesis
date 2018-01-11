@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "chalk": "^2.3.0",
+    "is-empty": "^1.2.0",
     "jest": "^22.0.4",
     "lowdb": "^1.0.0",
     "make-dir": "^1.1.0"
@@ -18,6 +19,9 @@
   "jest": {
     "verbose": true,
     "bail": false,
-    "modulePathIgnorePatterns": [".sandbox", "node_modules"]
+    "modulePathIgnorePatterns": [
+      ".sandbox",
+      "node_modules"
+    ]
   }
 }
