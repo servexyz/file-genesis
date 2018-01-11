@@ -3,7 +3,7 @@
  * @Date:   2018-01-02T09:33:13-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-11T15:01:19-08:00
+ * @Last modified time: 2018-01-11T15:48:24-08:00
  */
 
 const fs = require("fs-extra");
@@ -127,25 +127,37 @@ function cFile(where, what, type) {
   }
 }
 
-function dFile(names) {
-  deleteFile([...name], (err, deleted) => {
-    if (err) {
-      log(
-        `Failed to delete ${chalk.blue(JSON.stringify(names))}. ${chalk.red(
-          err
-        )}`
-      );
-      return false;
-    } else {
-      log(`Succeeded in deleting ${chalk.blue(JSON.stringify(names))}`);
-      return true;
-    }
+function dFiles(...filepaths) {
+  let listOfDeletedFilepaths = [];
+  filepaths.map(file => {
+    fs.unlink(file, err => {
+      if (error) {
+        log(`Failed to remove file ${chalk.blue(file)}`);
+      } else {
+        listOfDeletedFilepaths.push(file);
+        log(`Deleted file ${chalk.blue(file)}`);
+      }
+    });
   });
+  // deleteFile([...name], (err, deleted) => {
+  //   if (err) {
+  //     log(
+  //       `Failed to delete ${chalk.blue(JSON.stringify(names))}. ${chalk.red(
+  //         err
+  //       )}`
+  //     );
+  //     return false;
+  //   } else {
+  //     log(`Succeeded in deleting ${chalk.blue(JSON.stringify(names))}`);
+  //     return true;
+  //   }
+  // });
 }
 
 //TODO: Create "uFile" function which updates permissions and/or ownership
 
 module.exports = {
   createFile: cFile,
+  deleteFiles: dFiles,
   utilBasename: basename
 };
