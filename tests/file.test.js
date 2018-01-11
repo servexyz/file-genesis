@@ -3,7 +3,7 @@
  * @Date:   2018-01-04T12:43:32-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-11T13:59:32-08:00
+ * @Last modified time: 2018-01-11T14:44:02-08:00
  */
 
 const log = console.log;
@@ -33,7 +33,7 @@ test("File created", () => {
 // test("Symlink created", () => {
 //   const { createFile, utilBasename } = require("../src/file.js");
 //   //create symlink, write history
-//   let target = `${paths.T_TEMPLATES}/sample.template.js`;
+//   let target = `${paths.C_TEMPLATES}/sample.template.js`;
 //   let destination = `${paths.T_SANDBOX}/samplate.js`;
 //   let sym = createFile(target, destination, "symlink");
 //   //read history

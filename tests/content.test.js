@@ -3,7 +3,7 @@
  * @Date:   2018-01-10T16:09:06-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-11T14:12:05-08:00
+ * @Last modified time: 2018-01-11T14:43:52-08:00
  */
 
 const log = console.log;
@@ -11,7 +11,7 @@ const paths = require("../config/paths.js");
 const path = require("path");
 const db = require("../src/db.js");
 const sandbox = paths.T_SANDBOX;
-const samplate = paths.T_TEMPLATES_SAMPLE;
+const samplate = paths.C_TEMPLATES_SAMPLE;
 
 const { D_HISTORY } = require("../config/paths.js");
 const db = require(path.join(__dirname, "./db.js"))(D_HISTORY);
