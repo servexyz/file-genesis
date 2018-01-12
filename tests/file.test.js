@@ -3,7 +3,7 @@
  * @Date:   2018-01-04T12:43:32-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-11T16:11:04-08:00
+ * @Last modified time: 2018-01-11T16:11:29-08:00
  */
 
 const log = console.log;
@@ -52,7 +52,7 @@ test("File<symlink> deleted", () => {
     if (err) {
       log(`Cannot delete. File doesn't exist. ${chalk.red(err)}`);
     } else {
-      deleteFiles(fPath);
+      deleteFiles(sDestination);
     }
   });
 });
