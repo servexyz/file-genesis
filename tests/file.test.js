@@ -3,7 +3,7 @@
  * @Date:   2018-01-04T12:43:32-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-11T15:49:32-08:00
+ * @Last modified time: 2018-01-11T16:11:04-08:00
  */
 
 const log = console.log;
@@ -12,23 +12,21 @@ const chalk = require("chalk");
 const paths = require(path.join(__dirname, "../config/paths.js"));
 const fs = require("fs-extra");
 
-const { C_HISTORY } = require("../config/paths.js");
-const db = require("../src/db.js")(C_HISTORY);
+const db = require("../src/db.js")(paths.C_HISTORY);
 
+const { createFile, deleteFiles } = require(paths.D_FILE);
 //Used for file created and file deleted tests
-let fName = `foo.bar`;
-let fPath = `${paths.T_SANDBOX}/${fName}`;
+const fName = `foo.bar`;
+const fPath = `${paths.T_SANDBOX}/${fName}`;
 
-test("File created", () => {
-  const { createFile } = require("../src/file.js");
+test("File<plain> created", () => {
   createFile(fPath, "empty file", "plain");
-  db.set("tests.lastFileCreated", fPath).write();
-  let lastFileCreated = String(db.get("tests.lastFileCreated"));
-  expect(lastFileCreated).toBe(fPath);
+  db.set("tests.lastPlainFileCreated", fPath).write();
+  let lastPlainFileCreated = String(db.get("tests.lastPlainFileCreated"));
+  expect(lastPlainFileCreated).toBe(fPath);
 });
 
-test("File deleted", () => {
-  const { deleteFiles } = require("../src/file.js");
+test("File<plain> deleted", () => {
   //TODO: Create utility which checks existence of file
   fs.access(fPath, err => {
     if (err) {
@@ -39,6 +37,25 @@ test("File deleted", () => {
   });
 });
 
+const sOrigin = `../.gitignore`;
+const sDestination = `${paths.T_SANDBOX}/${sOrigin}`;
+
+test("File<symlink> created", () => {
+  createFile(sDestination, sOrigin, "symlink");
+  db.set("tests.lastSymlinkFileCreated", sDestination).write();
+  let lastSymlinkFileCreated = String(db.get("tests.lastSymlinkFileCreated"));
+  expect(lastSymlinkFileCreated).toBe(sDestination);
+});
+
+test("File<symlink> deleted", () => {
+  fs.access(fPath, err => {
+    if (err) {
+      log(`Cannot delete. File doesn't exist. ${chalk.red(err)}`);
+    } else {
+      deleteFiles(fPath);
+    }
+  });
+});
 // test("Symlink created", () => {
 //   const { createFile, utilBasename } = require("../src/file.js");
 //   //create symlink, write history
