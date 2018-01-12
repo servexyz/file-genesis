@@ -6,8 +6,21 @@
   "repository": "git@alechp:servexyz/generator-generator-lib",
   "author": "alechp <me@alechp.com>",
   "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
   "dependencies": {
     "chalk": "^2.3.0",
-    "make-dir": "^1.1.0"
+    "fs-extra": "^5.0.0",
+    "is-empty": "^1.2.0",
+    "jest": "^22.0.4",
+    "lowdb": "^1.0.0",
+    "moment": "^2.20.1"
+  },
+  "jest": {
+    "verbose": true,
+    "bail": false,
+    "collectCoverage": true,
+    "modulePathIgnorePatterns": [".sandbox", "node_modules", "content.test.js"]
   }
 }

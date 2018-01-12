@@ -1,0 +1,10 @@
+{
+  "file": {
+    "plain": {
+      "last": "foo.bar"
+    },
+    "symlink": {
+      "last": ".gitignore"
+    }
+  }
+}
