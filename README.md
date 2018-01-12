@@ -33,12 +33,11 @@
 
 > Below are all of the possible file types
 
-| What     | Why                                               |
-| :------- | :------------------------------------------------ |
-| Plain    | Accept standard string (or empty string)          |
-| Template | Easily replace variables within given text        |
-| Config   | Manage configs to track files created and deleted |
-| Symlink  | Connect things with other things                  |
+| What     | Why                                        |
+| :------- | :----------------------------------------- |
+| Plain    | Accept standard string (or empty string)   |
+| Template | Easily replace variables within given text |
+| Symlink  | Connect things with other things           |
 
 > Below is a flushed out list of file types and their values
 
@@ -53,14 +52,6 @@
         "keys": variablesToReplace,
         "values": contentToReplaceVariablesWith,
       }
-      "track": false
-    },
-    "config": {
-      "content": {
-        "keys": variablesToReplace,
-        "values": contentToReplaceVariablesWith
-      }
-      "track": true
     },
     "symlink": {
       "content": {
@@ -74,6 +65,8 @@
 
 ### Abstracted::API
 
+TODO: I'm not sure this API makes sense anymore...
+
 > The functions below are an amalgam of file, directory and content manipulation. They work with respective [file types](#file-types).
 
 * [write](#write)
@@ -85,11 +78,11 @@
 
 > write(fName, fContent, fType)
 
-| Parameter  | Type         | Example                                            |
-| :--------- | :----------- | :------------------------------------------------- |
-| `fPath`    | string       | `foo/bar/file.ext`                                 |
-| `fContent` | string       |                                                    |
-| `fType`    | enum::string | `empty`, `template`, `config`, or `file` (default) |
+| Parameter  | Type         | Example                                     |
+| :--------- | :----------- | :------------------------------------------ |
+| `fPath`    | string       | `foo/bar/file.ext`                          |
+| `fContent` | string       |                                             |
+| `fType`    | enum::string | `plain` (default), `template`, or `symlink` |
 
 ##### Examples
 
@@ -170,15 +163,6 @@ Going to save this for last. Not even totally sure it's necessary at this point 
 | `file.ext` | UTF-8   |
 | `file`     | Symlink |
 
-#### Directory
-
-> [Directory.js](./directory.js)
-
-| Result     | Type   | Description                        |
-| :--------- | :----- | :--------------------------------- |
-| `/Foo`     | Simple | Empty directory is created         |
-| `/Foo/Bar` | Nested | Empty, nested directory is created |
-
 #### Content
 
 > [Content.js](./content.js)
@@ -186,7 +170,6 @@ Going to save this for last. Not even totally sure it's necessary at this point 
 | Result     | Type     | Description                                       |
 | :--------- | :------- | :------------------------------------------------ |
 | `file.ext` | Plain    | File is populated UTF-8 via initial write-file cb |
-| `file.ext` | Config   | File creates parseable config with conf store     |
 | `file.ext` | Template | File creates parseable config without conf store  |
 | `file.ext` | Symlink  | Symlink is created, pointing to dest file         |
 
