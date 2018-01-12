@@ -3,7 +3,7 @@
  * @Date:   2018-01-02T09:34:17-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-11T16:17:30-08:00
+ * @Last modified time: 2018-01-11T16:18:06-08:00
  */
 
 const fs = require("fs-extra");
@@ -29,9 +29,6 @@ function duplicate(templateSource) {
       reject(false);
     });
 }
-// Should I be using writeNewFile here?
-// Or should I just be using fs.writeSteam after content finishes ?
-// Latter seems like better option
 
 function getTemplateName(value) {
   /*

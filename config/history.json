@@ -1,7 +1,8 @@
 {
   "tests": {
-    "lastFileCreated": "/Users/alechp/Code/servexyz/generator-generator/lib/tests/.sandbox/foo.bar",
-    "lastPlainFileCreated": "/Users/alechp/Code/servexyz/generator-generator/lib/tests/.sandbox/foo.bar",
-    "lastSymlinkFileCreated": "/Users/alechp/Code/servexyz/generator-generator/lib/tests/.sandbox/../.gitignore"
+    "lastPlainFileCreated":
+      "/Users/alechp/Code/servexyz/generator-generator/lib/tests/.sandbox/foo.bar",
+    "lastSymlinkFileCreated":
+      "/Users/alechp/Code/servexyz/generator-generator/lib/tests/.sandbox/../.gitignore"
   }
 }
