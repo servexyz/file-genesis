@@ -65,7 +65,9 @@
 
 ### Abstracted::API
 
-TODO: I'm not sure this API makes sense anymore...
+<!--
+QUESTION: I'm not sure this API makes sense anymore...
+-->
 
 > The functions below are an amalgam of file, directory and content manipulation. They work with respective [file types](#file-types).
 
@@ -170,7 +172,7 @@ Going to save this for last. Not even totally sure it's necessary at this point 
 | Result     | Type     | Description                                       |
 | :--------- | :------- | :------------------------------------------------ |
 | `file.ext` | Plain    | File is populated UTF-8 via initial write-file cb |
-| `file.ext` | Template | File creates parseable config without conf store  |
+| `file.ext` | Template | File from template with interpolated variables    |
 | `file.ext` | Symlink  | Symlink is created, pointing to dest file         |
 
 ---
