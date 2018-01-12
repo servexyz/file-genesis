@@ -3,27 +3,28 @@
  * @Date:   2018-01-02T09:33:13-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-12T08:47:32-08:00
+ * @Last modified time: 2018-01-12T09:20:13-08:00
  */
 
 const fs = require("fs-extra");
 const chalk = require("chalk");
 const path = require("path");
+const paths = require("../config/paths.js");
 const log = console.log;
 
-const { C_HISTORY } = require("../config/paths.js");
-const db = require(path.join(__dirname, "./db.js"))(C_HISTORY);
+//TODO: Consider adding db_config && db_test to paths.js
+const db = require(path.join(__dirname, "./db.js"))(paths.C_HISTORY);
 
 ////////////////////////////////////////////////////
 // Utilities
 ////////////////////////////////////////////////////
+//TODO: Move utilities to src/helpers.js
 
 function basename(filepath) {
   return String(path.basename(filepath));
 }
 
-//TODO: Create "uFile" function which updates permissions and/or ownership
-
+//TODO: Create  function which updates permissions and/or ownership
 function updateDatabase(filepath, dbkey) {
   let lastUpdate = String(path.basename(filepath));
   try {
@@ -45,9 +46,6 @@ function cFilePlain(filename, content) {
     } else {
       log(`Created file${chalk.yellow("<plain>")}:\n ${chalk.blue(filename)}`);
       updateDatabase(filename, "file.plain.last");
-      // let createdFile = String(path.basename(filename));
-      // db.set("file.plain.last", createdFile).write();
-      // return createdFile;
     }
   });
 }
@@ -62,9 +60,7 @@ function cFileSymlink(destinationPath, sourcePath) {
           destinationPath
         )}`
       );
-      let createdFile = String(path.basename(destinationPath));
-      db.set("file.symlink.last", createdFile);
-      return createdFile;
+      updateDatabase(destinationPath, "file.symlink.last");
     }
   });
 }
