@@ -3,7 +3,7 @@
  * @Date:   2018-01-02T09:33:13-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-12T11:15:00-08:00
+ * @Last modified time: 2018-01-12T11:46:57-08:00
  */
 
 const fs = require("fs-extra");
@@ -11,28 +11,10 @@ const chalk = require("chalk");
 const path = require("path");
 const paths = require("../config/paths.js");
 const log = console.log;
-
 const db = paths.DB_CONFIG;
-////////////////////////////////////////////////////
-// Utilities
-////////////////////////////////////////////////////
-//TODO: Move utilities to src/helpers.js
 
-function basename(filepath) {
-  return String(path.basename(filepath));
-}
+const { basename, updateDatabase } = require("./helpers.js");
 
-//TODO: Create  function which updates permissions and/or ownership
-function updateDatabase(filepath, dbkey) {
-  let lastUpdate = String(path.basename(filepath));
-  try {
-    db.set(dbkey, lastUpdate).write();
-    return lastUpdate;
-  } catch (err) {
-    log(`Failed to update LowDB. ${chalk.red(err)}`);
-    return false;
-  }
-}
 ////////////////////////////////////////////////////
 // Create Files
 ////////////////////////////////////////////////////
@@ -90,6 +72,5 @@ function cFile(where, what, type) {
 }
 
 module.exports = {
-  createFile: cFile,
-  utilBasename: basename
+  createFile: cFile
 };

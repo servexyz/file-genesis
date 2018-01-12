@@ -73,7 +73,6 @@ QUESTION: I'm not sure this API makes sense anymore...
 
 * [write](#write)
 * [read](#read)
-* [update](#update)
 * [delete](#delete)
 
 #### write
@@ -109,21 +108,6 @@ QUESTION: I'm not sure this API makes sense anymore...
 | `foo/bar/file.ext` | ?      |
 
 ---
-
-#### update
-
-> update(fPath, fType, fContent)
-
-```
-Update is likely going to be the most difficult to implement given that it will need to take both concatenation and interpolation into account...
-Going to save this for last. Not even totally sure it's necessary at this point TBH.
-```
-
-| Parameter  | Type         | Example                                   |
-| :--------- | :----------- | :---------------------------------------- |
-| `fPath`    | string       | `foo/bar/file.ext`                        |
-| `fContent` | mixed        |                                           |
-| `fType`    | enum::string | `template`, `config`, or `file` (default) |
 
 ##### Examples
 
