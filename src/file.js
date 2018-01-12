@@ -3,7 +3,7 @@
  * @Date:   2018-01-02T09:33:13-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-11T16:17:20-08:00
+ * @Last modified time: 2018-01-11T16:38:59-08:00
  */
 
 const fs = require("fs-extra");
@@ -14,14 +14,13 @@ const log = console.log;
 const { C_HISTORY } = require("../config/paths.js");
 const db = require(path.join(__dirname, "./db.js"))(C_HISTORY);
 
-// https://www.npmjs.com/package/fs-extra
 /***************************************************
 Helper functions
 ***************************************************/
 function basename(filepath) {
   return String(path.basename(filepath));
 }
-
+//TODO: Remove prCreateFile
 function prCreateFile(name, content) {
   return new Promise((resolve, reject) => {
     fs.writeFile(name, content, "utf8", err => {
@@ -40,6 +39,8 @@ function prCreateFile(name, content) {
 ////////////////////////////////////////////////////
 // Creator helper methods
 ////////////////////////////////////////////////////
+
+//TODO: Swap prCreateFile with ensureFile
 function cFilePlain(filename, content) {
   prCreateFile(filename, content)
     .then(name => {
@@ -51,6 +52,8 @@ function cFilePlain(filename, content) {
     });
 }
 
+// TODO: Swap fs.symlink with fs.ensureSymlink
+//Info here: https://github.com/jprichardson/node-fs-extra/blob/HEAD/docs/ensureSymlink.md
 function cFileSymlink(destinationPath, sourcePath) {
   fs.symlink(sourcePath, destinationPath, err => {
     if (err) {
