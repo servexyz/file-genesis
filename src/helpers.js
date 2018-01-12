@@ -3,7 +3,7 @@
  * @Date:   2018-01-12T11:43:54-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-12T12:08:29-08:00
+ * @Last modified time: 2018-01-12T12:27:04-08:00
  */
 ////////////////////////////////////////////////////
 // Utilities
@@ -12,13 +12,15 @@
 const path = require("path");
 const log = console.log;
 const chalk = require("chalk");
+const paths = require("../config/paths.js");
+//TODO: Create function which updates permissions and/or ownership
 
 function basename(filepath) {
   return String(path.basename(filepath));
 }
 
-//TODO: Create  function which updates permissions and/or ownership
-function updateDatabase(filepath, dbkey) {
+function updateDatabase(db, filepath, dbkey) {
+  // whichDatabase == "config" || "test"
   let lastUpdate = String(path.basename(filepath));
   try {
     db.set(dbkey, lastUpdate).write();
@@ -29,7 +31,6 @@ function updateDatabase(filepath, dbkey) {
   }
 }
 
-//TODO: Create tests (in. helpers.test.js)
 module.exports = {
   basename,
   updateDatabase

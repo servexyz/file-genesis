@@ -3,7 +3,7 @@
  * @Date:   2018-01-02T09:33:13-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-12T11:46:57-08:00
+ * @Last modified time: 2018-01-12T12:26:51-08:00
  */
 
 const fs = require("fs-extra");
@@ -25,7 +25,7 @@ function cFilePlain(filename, content) {
       log(`cFilePlain failed. ${chalk.red(err)}`);
     } else {
       log(`Created file${chalk.yellow("<plain>")}:\n ${chalk.blue(filename)}`);
-      updateDatabase(filename, "file.plain.last");
+      updateDatabase(db, filename, "file.plain.last");
     }
   });
 }
@@ -40,7 +40,7 @@ function cFileSymlink(destinationPath, sourcePath) {
           destinationPath
         )}`
       );
-      updateDatabase(destinationPath, "file.symlink.last");
+      updateDatabase(db, destinationPath, "file.symlink.last");
     }
   });
 }
