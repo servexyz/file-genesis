@@ -3,7 +3,7 @@
  * @Date:   2018-01-02T09:33:13-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-11T16:52:35-08:00
+ * @Last modified time: 2018-01-12T08:17:33-08:00
  */
 
 const fs = require("fs-extra");
@@ -14,27 +14,15 @@ const log = console.log;
 const { C_HISTORY } = require("../config/paths.js");
 const db = require(path.join(__dirname, "./db.js"))(C_HISTORY);
 
-/***************************************************
-Helper functions
-***************************************************/
+////////////////////////////////////////////////////
+// Utilities
+////////////////////////////////////////////////////
+
 function basename(filepath) {
   return String(path.basename(filepath));
 }
-//TODO: Remove prCreateFile
-function prCreateFile(name, content) {
-  return new Promise((resolve, reject) => {
-    fs.writeFile(name, content, "utf8", err => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(name);
-      }
-    });
-  });
-  log(`Name: ${name}`);
-  let createdFile = String(path.basename(name));
-  db.set("file.last", createdFile).write();
-}
+
+//TODO: Create "uFile" function which updates permissions and/or ownership
 
 function updateDatabase(filepath, dbkey) {
   let lastUpdate = String(path.basename(filepath));
@@ -47,7 +35,7 @@ function updateDatabase(filepath, dbkey) {
   }
 }
 ////////////////////////////////////////////////////
-// Creator helper methods
+// Create Files
 ////////////////////////////////////////////////////
 
 function cFilePlain(filename, content) {
@@ -79,7 +67,7 @@ function cFileSymlink(destinationPath, sourcePath) {
 function cFileTemplate(filename, content) {}
 
 ////////////////////////////////////////////////////
-// Detailed API exposed functions
+// Detailed API
 ////////////////////////////////////////////////////
 function cFile(where, what, type) {
   switch (type) {
@@ -116,8 +104,6 @@ function dFiles(...filepaths) {
     });
   });
 }
-
-//TODO: Create "uFile" function which updates permissions and/or ownership
 
 module.exports = {
   createFile: cFile,
