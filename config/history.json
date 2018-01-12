@@ -1,8 +1,4 @@
 {
-  "tests": {
-    "lastPlainFileCreated": "/Users/alechp/Code/servexyz/generator-generator/lib/tests/.sandbox/foo.bar",
-    "lastSymlinkFileCreated": "/Users/alechp/Code/servexyz/generator-generator/lib/tests/.sandbox/../.gitignore"
-  },
   "file": {
     "plain": {
       "last": "foo.bar"
