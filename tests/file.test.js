@@ -3,7 +3,7 @@
  * @Date:   2018-01-04T12:43:32-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-12T09:15:11-08:00
+ * @Last modified time: 2018-01-12T10:19:45-08:00
  */
 
 const log = console.log;
@@ -47,3 +47,5 @@ afterAll(() => {
       log(`${chalk.yellow("file.test.js")} failed cleanup. ${chalk.red(err)}`);
     });
 });
+
+// TODO: Setup TRAVIS-CI for test suite
