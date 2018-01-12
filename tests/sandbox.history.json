@@ -1,5 +1,7 @@
 {
   "tests": {
-    "lastTestRan": "Jan, 11th, 2018, 4:12:5124"
+    "lastTestRan": "Jan, 11th, 2018, 4:59:1088",
+    "lastPlainFileCreated": "/Users/alechp/Code/servexyz/generator-generator/lib/tests/.sandbox/foo.bar",
+    "lastSymlinkFileCreated": "/Users/alechp/Code/servexyz/generator-generator/lib/tests/.sandbox/../.gitignore"
   }
 }

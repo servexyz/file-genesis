@@ -3,7 +3,7 @@
  * @Date:   2018-01-04T12:43:32-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-11T16:18:15-08:00
+ * @Last modified time: 2018-01-11T16:59:07-08:00
  */
 
 const log = console.log;
@@ -12,7 +12,7 @@ const chalk = require("chalk");
 const paths = require(path.join(__dirname, "../config/paths.js"));
 const fs = require("fs-extra");
 
-const db = require("../src/db.js")(paths.C_HISTORY);
+const db = require("../src/db.js")(paths.T_HISTORY);
 
 const { createFile, deleteFiles } = require(paths.D_FILE);
 
@@ -29,10 +29,8 @@ test("File<plain> created", () => {
 
 test("File<plain> deleted", () => {
   //TODO: Create utility which checks existence of file
-  fs.access(fPath, err => {
-    if (err) {
-      log(`Cannot delete. File doesn't exist. ${chalk.red(err)}`);
-    } else {
+  fs.pathExists(fPath, (err, exists) => {
+    if (exists) {
       deleteFiles(fPath);
     }
   });

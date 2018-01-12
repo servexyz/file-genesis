@@ -3,7 +3,7 @@
  * @Date:   2018-01-02T09:33:13-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-11T16:38:59-08:00
+ * @Last modified time: 2018-01-11T16:52:35-08:00
  */
 
 const fs = require("fs-extra");
@@ -36,35 +36,46 @@ function prCreateFile(name, content) {
   db.set("file.last", createdFile).write();
 }
 
+function updateDatabase(filepath, dbkey) {
+  let lastUpdate = String(path.basename(filepath));
+  try {
+    db.set(dbkey, lastUpdate).write();
+    return lastUpdate;
+  } catch (err) {
+    log(`Failed to update LowDB. ${chalk.red(err)}`);
+    return false;
+  }
+}
 ////////////////////////////////////////////////////
 // Creator helper methods
 ////////////////////////////////////////////////////
 
-//TODO: Swap prCreateFile with ensureFile
 function cFilePlain(filename, content) {
-  prCreateFile(filename, content)
-    .then(name => {
-      log(`Created ${chalk.blue(name)}`);
-      return name;
-    })
-    .catch(err => {
-      log(`cFilePlain failed. ${chalk.red(err)}`);
-    });
-}
-
-// TODO: Swap fs.symlink with fs.ensureSymlink
-//Info here: https://github.com/jprichardson/node-fs-extra/blob/HEAD/docs/ensureSymlink.md
-function cFileSymlink(destinationPath, sourcePath) {
-  fs.symlink(sourcePath, destinationPath, err => {
+  fs.ensureFile(filename, err => {
     if (err) {
-      log(`Failed to create symlink. ${chalk.red(err)}`);
+      log(`cFilePlain failed. ${chalk.red(err)}`);
     } else {
-      log(`Created symlink ${chalk.blue(destinationPath)}`);
-      return destinationPath;
+      log(`Created ${chalk.blue(filename)}`);
+      updateDatabase(filename, "file.plain.last");
+      // let createdFile = String(path.basename(filename));
+      // db.set("file.plain.last", createdFile).write();
+      // return createdFile;
     }
   });
 }
 
+function cFileSymlink(destinationPath, sourcePath) {
+  fs.ensureSymlink(sourcePath, destinationPath, err => {
+    if (err) {
+      log(`Failed to create symlink. ${chalk.red(err)}`);
+    } else {
+      log(`Created symlink ${chalk.blue(destinationPath)}`);
+      let createdFile = String(path.basename(destinationPath));
+      db.set("file.symlink.last", createdFile);
+      return createdFile;
+    }
+  });
+}
 function cFileTemplate(filename, content) {}
 
 ////////////////////////////////////////////////////
