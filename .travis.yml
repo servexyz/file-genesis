@@ -1,0 +1,19 @@
+# @Author: Alec Hale-Pletka <alechp>
+# @Date:   2018-01-12T13:50:05-08:00
+# @Email:  alec@bubblegum.academy
+# @Last modified by:   alechp
+# @Last modified time: 2018-01-12T13:50:31-08:00
+
+language: node_js
+sudo: false
+node_js:
+  - "9.3.0"
+before_install:
+  - npm i -g npm
+install:
+  - npm install
+script:
+  - npm test
+cache:
+  directories:
+    - "node_modules"
