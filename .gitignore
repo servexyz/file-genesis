@@ -1,3 +1,9 @@
+# project specific
+tests/.sandbox/.gitignore
+tests/.sandbox/foo.bar
+
+
+
 # Logs
 logs
 *.log

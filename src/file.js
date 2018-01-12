@@ -3,7 +3,7 @@
  * @Date:   2018-01-02T09:33:13-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-12T08:17:33-08:00
+ * @Last modified time: 2018-01-12T08:47:32-08:00
  */
 
 const fs = require("fs-extra");
@@ -43,7 +43,7 @@ function cFilePlain(filename, content) {
     if (err) {
       log(`cFilePlain failed. ${chalk.red(err)}`);
     } else {
-      log(`Created ${chalk.blue(filename)}`);
+      log(`Created file${chalk.yellow("<plain>")}:\n ${chalk.blue(filename)}`);
       updateDatabase(filename, "file.plain.last");
       // let createdFile = String(path.basename(filename));
       // db.set("file.plain.last", createdFile).write();
@@ -57,7 +57,11 @@ function cFileSymlink(destinationPath, sourcePath) {
     if (err) {
       log(`Failed to create symlink. ${chalk.red(err)}`);
     } else {
-      log(`Created symlink ${chalk.blue(destinationPath)}`);
+      log(
+        `Created file${chalk.yellow("<symlink>")}:\n ${chalk.blue(
+          destinationPath
+        )}`
+      );
       let createdFile = String(path.basename(destinationPath));
       db.set("file.symlink.last", createdFile);
       return createdFile;
@@ -91,22 +95,7 @@ function cFile(where, what, type) {
   }
 }
 
-function dFiles(...filepaths) {
-  let listOfDeletedFilepaths = [];
-  filepaths.map(file => {
-    fs.unlink(file, err => {
-      if (error) {
-        log(`Failed to remove file ${chalk.blue(file)}`);
-      } else {
-        listOfDeletedFilepaths.push(file);
-        log(`Deleted file ${chalk.blue(file)}`);
-      }
-    });
-  });
-}
-
 module.exports = {
   createFile: cFile,
-  deleteFiles: dFiles,
   utilBasename: basename
 };

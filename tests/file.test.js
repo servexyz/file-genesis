@@ -3,7 +3,7 @@
  * @Date:   2018-01-04T12:43:32-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-11T16:59:07-08:00
+ * @Last modified time: 2018-01-12T09:00:51-08:00
  */
 
 const log = console.log;
@@ -27,18 +27,10 @@ test("File<plain> created", () => {
   expect(lastPlainFileCreated).toBe(fPath);
 });
 
-test("File<plain> deleted", () => {
-  //TODO: Create utility which checks existence of file
-  fs.pathExists(fPath, (err, exists) => {
-    if (exists) {
-      deleteFiles(fPath);
-    }
-  });
-});
-
 //<symlink> file variables
-const sOrigin = `../.gitignore`;
-const sDestination = `${paths.T_SANDBOX}/${sOrigin}`;
+const sName = `.gitignore`;
+const sOrigin = path.join(__dirname, `../${sName}`);
+const sDestination = `${paths.T_SANDBOX}/${sName}`;
 
 test("File<symlink> created", () => {
   createFile(sDestination, sOrigin, "symlink");
@@ -47,12 +39,11 @@ test("File<symlink> created", () => {
   expect(lastSymlinkFileCreated).toBe(sDestination);
 });
 
-test("File<symlink> deleted", () => {
-  fs.access(fPath, err => {
-    if (err) {
-      log(`Cannot delete. File doesn't exist. ${chalk.red(err)}`);
-    } else {
-      deleteFiles(sDestination);
-    }
-  });
+afterAll(() => {
+  fs
+    .remove(fPath)
+    .remove(sDestination)
+    .catch(err => {
+      log(`${chalk.yellow("file.test.js")} failed cleanup. ${chalk.red(err)}`);
+    });
 });
