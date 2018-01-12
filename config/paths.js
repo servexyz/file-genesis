@@ -3,7 +3,7 @@
  * @Date:   2018-01-08T14:13:42-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-11T15:28:55-08:00
+ * @Last modified time: 2018-01-12T11:13:37-08:00
  */
 
 const path = require("path");
@@ -28,6 +28,11 @@ const CONFIG_TEMPLATES_DUPLICATES = path.join(
   "../templates/.duplicates"
 );
 
+//DB Instantiation
+const DB = path.join(__dirname, "../src/db.js");
+const DB_CONFIG = require(DB)(CONFIG_HISTORY_DB);
+const DB_TEST = require(DB)(TEST_HISTORY_DB);
+
 module.exports = {
   C_HISTORY: CONFIG_HISTORY_DB,
   C_TEMPLATES: CONFIG_TEMPLATES,
@@ -37,5 +42,8 @@ module.exports = {
   D_FILE: DETAILED_FILE,
   T_SANDBOX: TEST_SANDBOX,
   T_HISTORY: TEST_HISTORY_DB,
-  T_TEMPLATES_SAMPLE: TEST_TEMPLATES_SAMPLE
+  T_TEMPLATES_SAMPLE: TEST_TEMPLATES_SAMPLE,
+  DB_PATH: DB,
+  DB_CONFIG: DB_CONFIG,
+  DB_TEST: DB_TEST
 };

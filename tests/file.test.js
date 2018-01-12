@@ -3,7 +3,7 @@
  * @Date:   2018-01-04T12:43:32-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-12T10:19:45-08:00
+ * @Last modified time: 2018-01-12T11:13:49-08:00
  */
 
 const log = console.log;
@@ -12,7 +12,8 @@ const chalk = require("chalk");
 const paths = require(path.join(__dirname, "../config/paths.js"));
 const fs = require("fs-extra");
 
-const db = require("../src/db.js")(paths.T_HISTORY);
+// const db = require("../src/db.js")(paths.T_HISTORY);
+const db = paths.DB_TEST;
 
 const { createFile, deleteFiles } = require(paths.D_FILE);
 
