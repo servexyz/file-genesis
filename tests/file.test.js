@@ -3,7 +3,7 @@
  * @Date:   2018-01-04T12:43:32-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-11T16:11:29-08:00
+ * @Last modified time: 2018-01-11T16:14:32-08:00
  */
 
 const log = console.log;
@@ -15,7 +15,8 @@ const fs = require("fs-extra");
 const db = require("../src/db.js")(paths.C_HISTORY);
 
 const { createFile, deleteFiles } = require(paths.D_FILE);
-//Used for file created and file deleted tests
+
+//<plain> file variables
 const fName = `foo.bar`;
 const fPath = `${paths.T_SANDBOX}/${fName}`;
 
@@ -37,6 +38,7 @@ test("File<plain> deleted", () => {
   });
 });
 
+//<symlink> file variables
 const sOrigin = `../.gitignore`;
 const sDestination = `${paths.T_SANDBOX}/${sOrigin}`;
 
@@ -56,16 +58,3 @@ test("File<symlink> deleted", () => {
     }
   });
 });
-// test("Symlink created", () => {
-//   const { createFile, utilBasename } = require("../src/file.js");
-//   //create symlink, write history
-//   let target = `${paths.C_TEMPLATES}/sample.template.js`;
-//   let destination = `${paths.T_SANDBOX}/samplate.js`;
-//   let sym = createFile(target, destination, "symlink");
-//   //read history
-//   let history = require(paths.D_HISTORY);
-//   let lastDestination = history.symlink.last.destination;
-//   // let lastTarget = history.symlink.last.target;
-//   // expect(target).toBe( lastTarget);
-//   expect(utilBasename(destination)).toBe(lastDestination);
-// });

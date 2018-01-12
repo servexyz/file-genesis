@@ -3,7 +3,7 @@
  * @Date:   2018-01-02T09:33:13-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-11T16:07:22-08:00
+ * @Last modified time: 2018-01-11T16:17:20-08:00
  */
 
 const fs = require("fs-extra");
@@ -37,10 +37,9 @@ function prCreateFile(name, content) {
   db.set("file.last", createdFile).write();
 }
 
-/***************************************************
-Creator Functions
-***************************************************/
-// Helpers
+////////////////////////////////////////////////////
+// Creator helper methods
+////////////////////////////////////////////////////
 function cFilePlain(filename, content) {
   prCreateFile(filename, content)
     .then(name => {
@@ -52,8 +51,6 @@ function cFilePlain(filename, content) {
     });
 }
 
-function cFileConfig(filename, config) {}
-function cFileTemplate(filename, content) {}
 function cFileSymlink(destinationPath, sourcePath) {
   fs.symlink(sourcePath, destinationPath, err => {
     if (err) {
@@ -65,9 +62,12 @@ function cFileSymlink(destinationPath, sourcePath) {
   });
 }
 
-//Primary
+function cFileTemplate(filename, content) {}
+
+////////////////////////////////////////////////////
+// Detailed API exposed functions
+////////////////////////////////////////////////////
 function cFile(where, what, type) {
-  //TODO: Add encoding option
   switch (type) {
     case "plain":
       /*
@@ -83,8 +83,6 @@ function cFile(where, what, type) {
       return cFileSymlink(where, what);
     case "template":
       return cFileTemplate(where, what);
-    case "config":
-      return cFileConfig(where, what);
     default:
       log("Please specify file type.");
       break;
@@ -103,19 +101,6 @@ function dFiles(...filepaths) {
       }
     });
   });
-  // deleteFile([...name], (err, deleted) => {
-  //   if (err) {
-  //     log(
-  //       `Failed to delete ${chalk.blue(JSON.stringify(names))}. ${chalk.red(
-  //         err
-  //       )}`
-  //     );
-  //     return false;
-  //   } else {
-  //     log(`Succeeded in deleting ${chalk.blue(JSON.stringify(names))}`);
-  //     return true;
-  //   }
-  // });
 }
 
 //TODO: Create "uFile" function which updates permissions and/or ownership
