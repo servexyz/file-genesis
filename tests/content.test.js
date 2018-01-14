@@ -3,7 +3,7 @@
  * @Date:   2018-01-10T16:09:06-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-12T09:17:08-08:00
+ * @Last modified time: 2018-01-14T09:43:46-08:00
  */
 
 const log = console.log;
@@ -21,4 +21,6 @@ test("Content interpolation works as expected", () => {
     3. Return new content in new file
     Requirement
     */
+
+  let parsed = template`${samplate}`;
 });
