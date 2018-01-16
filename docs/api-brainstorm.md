@@ -36,8 +36,16 @@ What differentiates library from boilerplate? Library's purpose is to be include
 
 ## Second brainstorm
 
-![first brainstorm](./images/api_brainstorm_2.jpg)
+![second brainstorm](./images/api_brainstorm_2.jpg)
+
+> Thinking more deeply about inheritance
 
 The only generator I'm not sure about at this point is Crichton (ie. boilerplate-generator). I think it's the abstraction generator which wraps all other Wrigley design patterns and produces single boilerplates. But I'm not sure.
 
 I think what makes sense is to focus exclusively on `generator-generator` and `library-generator` Bring those two to completion and then move onto the rest.
+
+## Third brainstorm
+
+> Considering the actual API for library-gen & generator-gen
+
+![third brainstorm](./images/api_brainstorm_3.jpg)
