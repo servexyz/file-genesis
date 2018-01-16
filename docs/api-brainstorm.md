@@ -49,3 +49,8 @@ I think what makes sense is to focus exclusively on `generator-generator` and `l
 > Considering the actual API for library-gen & generator-gen
 
 ![third brainstorm](./images/api_brainstorm_3.jpg)
+
+* Config generator is new addition
+* Could make config-parser its own module
+  * Or perhaps it makes more senes to just include parser in generator?
+    * Less modular that way. Just break apart. Follow the same pattern of splitting that style-gen and style-bridge are following.
