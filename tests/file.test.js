@@ -3,7 +3,7 @@
  * @Date:   2018-01-04T12:43:32-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-12T11:42:26-08:00
+ * @Last modified time: 2018-01-24T10:10:42-08:00
  */
 
 const log = console.log;
@@ -40,11 +40,10 @@ test("File<symlink> created", () => {
   expect(lastSymlinkFileCreated).toBe(sDestination);
 });
 
-afterAll(() => {
-  fs
-    .remove(fPath)
-    .remove(sDestination)
-    .catch(err => {
-      log(`${chalk.yellow("file.test.js")} failed cleanup. ${chalk.red(err)}`);
-    });
+beforeAll(() => {
+  let directories = [fPath, sDestination];
+  for (let d of directories) {
+    log(`Removing: ${chalk.yellow(d)}`);
+    fs.removeSync(d);
+  }
 });

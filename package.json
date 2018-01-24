@@ -20,7 +20,7 @@
   "jest": {
     "verbose": true,
     "bail": false,
-    "collectCoverage": true,
-    "modulePathIgnorePatterns": [".sandbox", "node_modules", "content.test.js"]
+    "collectCoverage": false,
+    "modulePathIgnorePatterns": ["sandbox", "node_modules", "content.test.js"]
   }
 }

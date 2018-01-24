@@ -3,7 +3,7 @@
  * @Date:   2018-01-08T14:13:42-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-12T12:22:38-08:00
+ * @Last modified time: 2018-01-24T09:57:11-08:00
  */
 
 const path = require("path");
@@ -14,7 +14,7 @@ const DETAILED_FILE = path.join(__dirname, "../src/file.js");
 
 //TEST
 const TEST_HISTORY_DB = path.join(__dirname, "../tests/sandbox.history.json");
-const TEST_SANDBOX = path.join(__dirname, "../tests/.sandbox");
+const TEST_SANDBOX = path.join(__dirname, "../tests/sandbox");
 const TEST_TEMPLATES_SAMPLE = path.join(
   __dirname,
   "../templates/sample.template.js"

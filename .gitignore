@@ -1,6 +1,4 @@
-# project specific
-tests/.sandbox/.gitignore
-tests/.sandbox/foo.bar
+tests/sandbox
 
 # Logs
 logs

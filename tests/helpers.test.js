@@ -3,7 +3,7 @@
  * @Date:   2018-01-12T11:47:28-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-12T12:03:54-08:00
+ * @Last modified time: 2018-01-24T09:58:44-08:00
  */
 
 const moment = require("moment");
@@ -11,8 +11,10 @@ const paths = require("../config/paths.js");
 
 test("basename extracts filename from filepath", () => {
   const { basename } = require("../src/helpers.js");
+  //Doesn't matter that this path is specific...
+  //Just making sure that foo.bar is being extracted as expected
   let filepath =
-    "/Users/alechp/Code/servexyz/generator-generator/lib/tests/.sandbox/foo.bar";
+    "/Users/alechp/Code/servexyz/generator-generator/lib/tests/sandbox/foo.bar";
   let extractedFilename = basename(filepath);
   expect(extractedFilename).toBe("foo.bar");
 });
