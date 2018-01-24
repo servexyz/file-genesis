@@ -2,6 +2,12 @@
 
 ## Interpolate templates plan
 
+### Issues
+
+![component is not defined](./images/interpolationAHP001.png)
+
+### Brainstorm
+
 > See [todo](./todo.md) for action items
 > See [this](https://stackoverflow.com/questions/29182244/convert-a-string-to-a-template-string) for relevant discussion
 

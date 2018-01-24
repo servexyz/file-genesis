@@ -3,7 +3,7 @@
  * @Date:   2018-01-09T20:26:20-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-24T11:09:25-08:00
+ * @Last modified time: 2018-01-24T11:13:06-08:00
  */
 
 const SAMPLE_TEMPLATE = `
