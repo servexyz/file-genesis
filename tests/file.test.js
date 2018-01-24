@@ -3,7 +3,7 @@
  * @Date:   2018-01-04T12:43:32-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-24T10:10:42-08:00
+ * @Last modified time: 2018-01-24T10:19:22-08:00
  */
 
 const log = console.log;
@@ -34,7 +34,7 @@ const sOrigin = path.join(__dirname, `../${sName}`);
 const sDestination = `${paths.T_SANDBOX}/${sName}`;
 
 test("File<symlink> created", () => {
-  createFile(sDestination, sOrigin, "symlink");
+  createFile(sOrigin, sDestination, "symlink");
   db.set("tests.lastSymlinkFileCreated", sDestination).write();
   let lastSymlinkFileCreated = String(db.get("tests.lastSymlinkFileCreated"));
   expect(lastSymlinkFileCreated).toBe(sDestination);

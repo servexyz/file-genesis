@@ -3,7 +3,7 @@
  * @Date:   2018-01-02T09:33:13-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-24T10:17:17-08:00
+ * @Last modified time: 2018-01-24T10:33:05-08:00
  */
 
 const fs = require("fs-extra");
@@ -63,7 +63,7 @@ function cFile(where, what, type) {
         @@where = destination path;
 
       */
-      return cFileSymlink(what, where);
+      return cFileSymlink(where, what);
     case "template":
       return cFileTemplate(where, what);
     default:
