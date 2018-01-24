@@ -3,7 +3,7 @@
  * @Date:   2018-01-02T09:33:13-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-24T10:03:36-08:00
+ * @Last modified time: 2018-01-24T10:17:17-08:00
  */
 
 const fs = require("fs-extra");
@@ -30,7 +30,7 @@ function cFilePlain(filename, content) {
   });
 }
 
-function cFileSymlink(destinationPath, sourcePath) {
+function cFileSymlink(sourcePath, destinationPath) {
   fs.ensureSymlink(sourcePath, destinationPath, err => {
     if (err) {
       log(`Failed to create symlink. ${chalk.red(err)}`);
@@ -59,10 +59,11 @@ function cFile(where, what, type) {
       return cFilePlain(where, what);
     case "symlink":
       /*
-        @@where = destination path;
         @@what = source path;
+        @@where = destination path;
+
       */
-      return cFileSymlink(where, what);
+      return cFileSymlink(what, where);
     case "template":
       return cFileTemplate(where, what);
     default:
