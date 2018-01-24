@@ -2,7 +2,10 @@
 
 ## Interpolate templates plan
 
-Template:
+> See [todo](./todo.md) for action items
+> See [this](https://stackoverflow.com/questions/29182244/convert-a-string-to-a-template-string) for relevant discussion
+
+**Template**
 
 ```
 export const SAMPLE_TEMPLATE = `

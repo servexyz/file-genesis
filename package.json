@@ -21,6 +21,6 @@
     "verbose": true,
     "bail": false,
     "collectCoverage": false,
-    "modulePathIgnorePatterns": ["sandbox", "node_modules", "content.test.js"]
+    "modulePathIgnorePatterns": ["sandbox", "node_modules"]
   }
 }

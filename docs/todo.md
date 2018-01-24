@@ -13,11 +13,3 @@
     * [ ] Execute string literal functions on remaining content
       * [ ] whitespace
       * [ ] interpolate
-
-## Thoughts
-
-Re: SAMPLE_TEMPLATE
-
-```
-
-```
