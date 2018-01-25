@@ -3,7 +3,7 @@
  * @Date:   2018-01-08T14:13:42-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-12T11:13:37-08:00
+ * @Last modified time: 2018-01-24T11:03:07-08:00
  */
 
 const path = require("path");
@@ -14,7 +14,7 @@ const DETAILED_FILE = path.join(__dirname, "../src/file.js");
 
 //TEST
 const TEST_HISTORY_DB = path.join(__dirname, "../tests/sandbox.history.json");
-const TEST_SANDBOX = path.join(__dirname, "../tests/.sandbox");
+const TEST_SANDBOX = path.join(__dirname, "../tests/sandbox");
 const TEST_TEMPLATES_SAMPLE = path.join(
   __dirname,
   "../templates/sample.template.js"
@@ -29,9 +29,9 @@ const CONFIG_TEMPLATES_DUPLICATES = path.join(
 );
 
 //DB Instantiation
-const DB = path.join(__dirname, "../src/db.js");
-const DB_CONFIG = require(DB)(CONFIG_HISTORY_DB);
-const DB_TEST = require(DB)(TEST_HISTORY_DB);
+const DB_PATH = path.join(__dirname, "../src/db.js");
+const DB_CONFIG = require(DB_PATH)(CONFIG_HISTORY_DB);
+const DB_TEST = require(DB_PATH)(TEST_HISTORY_DB);
 
 module.exports = {
   C_HISTORY: CONFIG_HISTORY_DB,
@@ -43,7 +43,7 @@ module.exports = {
   T_SANDBOX: TEST_SANDBOX,
   T_HISTORY: TEST_HISTORY_DB,
   T_TEMPLATES_SAMPLE: TEST_TEMPLATES_SAMPLE,
-  DB_PATH: DB,
+  DB_PATH: DB_PATH,
   DB_CONFIG: DB_CONFIG,
   DB_TEST: DB_TEST
 };

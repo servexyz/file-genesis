@@ -3,10 +3,10 @@
  * @Date:   2018-01-09T20:26:20-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-11T11:15:01-08:00
+ * @Last modified time: 2018-01-24T11:13:06-08:00
  */
 
-export const SAMPLE_TEMPLATE = `
+const SAMPLE_TEMPLATE = `
   ${"sample.template.js"}
   import React from 'react';
   import PropTypes from 'prop-types';
@@ -32,3 +32,7 @@ export const SAMPLE_TEMPLATE = `
     }
   }
 `;
+
+module.exports = {
+  TEMPLATE: SAMPLE_TEMPLATE
+};
