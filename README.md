@@ -26,3 +26,4 @@
 ---
 
 * consistent api for symlinks, plain UTF-8 files and templates
+* interoperable with content-genesis
