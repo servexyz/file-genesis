@@ -3,11 +3,11 @@
  * @Date:   2018-01-09T20:26:20-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-24T11:13:06-08:00
+ * @Last modified time: 2018-01-26T16:18:44-08:00
  */
 
-const SAMPLE_TEMPLATE = `
-  ${"sample.template.js"}
+const multiline = require("multiline");
+const SAMPLE_TEMPLATE = multiline(() => {/*
   import React from 'react';
   import PropTypes from 'prop-types';
   export default class ${component} extends React.Component {
@@ -31,7 +31,7 @@ const SAMPLE_TEMPLATE = `
       )
     }
   }
-`;
+*/});
 
 module.exports = {
   TEMPLATE: SAMPLE_TEMPLATE

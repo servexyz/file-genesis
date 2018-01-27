@@ -3,7 +3,7 @@
  * @Date:   2018-01-04T12:43:32-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-24T10:19:22-08:00
+ * @Last modified time: 2018-01-26T16:20:19-08:00
  */
 
 const log = console.log;
@@ -15,7 +15,7 @@ const fs = require("fs-extra");
 // const db = require("../src/db.js")(paths.T_HISTORY);
 const db = paths.DB_TEST;
 
-const { createFile, deleteFiles } = require(paths.D_FILE);
+const { createFile } = require(paths.API);
 
 //<plain> file variables
 const fName = `foo.bar`;
@@ -38,6 +38,36 @@ test("File<symlink> created", () => {
   db.set("tests.lastSymlinkFileCreated", sDestination).write();
   let lastSymlinkFileCreated = String(db.get("tests.lastSymlinkFileCreated"));
   expect(lastSymlinkFileCreated).toBe(sDestination);
+});
+
+//test mostly copied from content-genesis
+let expectedFooUgly = `
+ import React from \"react\";
+ import PropTypes from "prop-types";
+ export default class Foo extends React.Component {
+   static defaultProps = {
+     place: "holder"
+   };
+   static propTypes = {
+     place: React.PropTypes.string.isRequired
+   };
+   state = {
+     foo: "bar"
+   };
+   constructor(props) {
+     super(props);
+   }
+   render() {
+     return <div>{this.state.foo}</div>;
+   }
+ }
+`;
+test("File<template> created", () => {
+  let content = {
+    template: require(paths.T_TEMPLATES_SAMPLE),
+    variables: { component: "Foo" }
+  };
+  createFile(filename, content);
 });
 
 beforeAll(() => {

@@ -3,10 +3,12 @@
  * @Date:   2018-01-08T14:13:42-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-24T11:03:07-08:00
+ * @Last modified time: 2018-01-26T16:13:39-08:00
  */
 
 const path = require("path");
+
+const API = path.join(__dirname, "../index.js");
 //DETAILED
 const DETAILED_CONTENT = path.join(__dirname, "../src/content.js");
 const DETAILED_DIRECTORY = path.join(__dirname, "../src/directory.js");

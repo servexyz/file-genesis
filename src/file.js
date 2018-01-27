@@ -3,7 +3,7 @@
  * @Date:   2018-01-02T09:33:13-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-26T15:37:33-08:00
+ * @Last modified time: 2018-01-26T16:14:40-08:00
  */
 
 const fs = require("fs-extra");
@@ -13,7 +13,6 @@ const paths = require("../config/paths.js");
 const empty = require("is-empty");
 const log = console.log;
 const db = paths.DB_CONFIG;
-const { template } = require("content-genesis");
 const { basename, updateDatabase } = require("./helpers.js");
 
 ////////////////////////////////////////////////////
@@ -25,7 +24,7 @@ function cFilePlain(filename, content) {
   if (empty(content)) {
     fs.ensureFile(filename, err => {
       if (err) {
-        log(`cFilePlain failed. ${chalk.red(err)}`);
+        log(`cFileEmpty failed. ${chalk.red(err)}`);
       } else {
         log(
           `Created file${chalk.yellow("<empty>")}:\n ${chalk.blue(filename)}`
@@ -61,4 +60,24 @@ function cFileSymlink(sourcePath, destinationPath) {
     }
   });
 }
-function cFileTemplate(filename, content) {}
+function cFileTemplate(filename, content) {
+  //content.template && content.variables
+  const { template } = require("content-genesis");
+  let templateContent = template(content.templatePath, content.variablesObject);
+  fs.outputFile(filename, templateContent, err => {
+    if (err) {
+      log(`cFileTemplate failed. ${chalk.red(err)}`);
+    } else {
+      log(
+        `Created file${chalk.yellow("<template>")}:\n ${chalk.blue(filename)}`
+      );
+      updateDatabase(db, filename, "file.template.last");
+    }
+  });
+}
+
+module.exports = {
+  cFilePlain,
+  cFileSymlink,
+  cFileTemplate
+};
