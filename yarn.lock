@@ -486,6 +486,13 @@ console-control-strings@^1.0.0, console-control-strings@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/console-control-strings/-/console-control-strings-1.1.0.tgz#3d7cf4464db6446ea644bf4b39507f9851008e8e"
 
+content-genesis@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/content-genesis/-/content-genesis-0.5.1.tgz#e74a123974ca1056eb865b4947bf4233959c2b42"
+  dependencies:
+    chalk "^2.3.0"
+    multiline "^1.0.2"
+
 content-type-parser@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/content-type-parser/-/content-type-parser-1.0.2.tgz#caabe80623e63638b2502fd4c7f12ff4ce2352e7"
