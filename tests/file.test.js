@@ -3,7 +3,7 @@
  * @Date:   2018-01-04T12:43:32-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-27T13:59:59-08:00
+ * @Last modified time: 2018-01-27T14:16:17-08:00
  */
 
 const log = console.log;
@@ -77,18 +77,12 @@ let filepathPlain = `${paths.T_SANDBOX}/plain.js`;
 let filepathSymlink = `${paths.T_SANDBOX}/symlink.js`;
 let filepathTemplate = `${paths.T_SANDBOX}/template.js`;
 
-// test("new-file API", () => {
-//   const { File } = require("../src/file-new.js");
-//   let filepath = `${paths.T_SANDBOX}/tested.js`;
-//   let tested = new File();
-//   tested.create(filepath).plain("foobar");
-//   File.create(filepath).plain("foobar");
-// });
-
 test("new-file API", () => {
-  const { Filez } = require("../src/file-new.js");
-  Filez(filepathPlain).plain("foobar");
-  Filez(filepathSymlink).symlink(paths.API);
+  const { File } = require("../src/file-new.js");
+  File(filepathPlain).plain("foobar");
+  File(filepathSymlink).symlink(paths.API);
+  let variables = { component: "FooBar" };
+  File(filepathTemplate).template(paths.T_TEMPLATES_SAMPLE, variables);
 });
 
 beforeAll(() => {

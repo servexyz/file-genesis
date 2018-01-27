@@ -3,14 +3,13 @@
  * @Date:   2018-01-27T12:24:30-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-27T14:05:01-08:00
+ * @Last modified time: 2018-01-27T14:13:50-08:00
  */
 
 const log = console.log;
 const chalk = require("chalk");
 const fs = require("fs-extra");
 const { fluent } = require("./helpers.js");
-const { template } = require("content-genesis");
 
 let File = filepath => {
   this.filepath = filepath;
@@ -34,6 +33,17 @@ let File = filepath => {
               this.filepath
             )} \n ${chalk.red(err)}`
           );
+        }
+      });
+    },
+    template: (original, variables) => {
+      //TODO: Play around with async/await
+      const { template } = require("content-genesis");
+      let templateContent = template(original, variables);
+      fs.outputFile(this.filepath, templateContent, err => {
+        if (err) {
+          log(`Failed to duplicate template. \n ${chalk.red(err)}`);
+          return err;
         }
       });
     }
