@@ -42,7 +42,7 @@ file.create(path.join(__dirname, ".gitignore")).plain(gitignore);
 **plain**
 
 ```js
-File("/path/to/file.ext").plain(<string>content)
+File("/path/to/file.ext").plain("content");
 ```
 
 **symlink**
@@ -54,7 +54,8 @@ File("/path/to/file.ext").symlink("/path/to/src", "/path/to/dest");
 **template**
 
 ```js
-File("/path/to/file.ext").template("path/to/template.ext", "variables");
+let variables = { replaceMe: "withThisValue" };
+File("/path/to/file.ext").template("path/to/template.ext", variables);
 ```
 
 ---
