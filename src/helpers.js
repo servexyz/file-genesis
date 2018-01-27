@@ -3,7 +3,7 @@
  * @Date:   2018-01-12T11:43:54-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-12T12:27:04-08:00
+ * @Last modified time: 2018-01-27T12:45:05-08:00
  */
 ////////////////////////////////////////////////////
 // Utilities
@@ -31,7 +31,15 @@ function updateDatabase(db, filepath, dbkey) {
   }
 }
 
+function fluent(fxn) {
+  return (...args) => {
+    fn.apply(this, args);
+    return this;
+  };
+}
+
 module.exports = {
   basename,
+  fluent,
   updateDatabase
 };

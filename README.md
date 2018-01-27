@@ -18,7 +18,7 @@ yarn add file-genesis
 
 ```js
 const path = require("path");
-const { file } = require("file-genesis");
+const { File } = require("file-genesis");
 const gitignore = `
   .DS_Store
   node_modules
@@ -35,34 +35,26 @@ file.create(path.join(__dirname, ".gitignore")).plain(gitignore);
 
 ---
 
-#### `create()`
-
-> This is the root invocation
-
-```js
-file.create("/path/and/file/name.ext");
-```
-
-#### `.plain()`, `.symlink()`, `.template()`
+### `.plain()`, `.symlink()`, `.template()`
 
 > This is used to specify the type and pass content
 
 **plain**
 
 ```js
-file.create("/path/to/file.ext").plain(<string>content)
+File("/path/to/file.ext").plain(<string>content)
 ```
 
 **symlink**
 
 ```js
-file.create("/path/to/file.ext").symlink("/path/to/src", "/path/to/dest");
+File("/path/to/file.ext").symlink("/path/to/src", "/path/to/dest");
 ```
 
 **template**
 
 ```js
-file.create("/path/to/file.ext").template("path/to/template.ext", "variables");
+File("/path/to/file.ext").template("path/to/template.ext", "variables");
 ```
 
 ---
@@ -74,7 +66,9 @@ file.create("/path/to/file.ext").template("path/to/template.ext", "variables");
 * [api-brainstorm](./docs/api-brainstorm.md)
   > Multiple brainstorming attempts & old README content
 * [debug](./docs/debug.md)
-  > History of debugging
+  > Documented debugging
+* [resources](./docs/resources.md)
+  > 3rd party API's
 * [todo](./docs/todo.md)
   > Features & bugs by version
 
