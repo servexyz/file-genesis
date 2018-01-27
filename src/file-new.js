@@ -3,21 +3,42 @@
  * @Date:   2018-01-27T12:24:30-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-27T12:50:34-08:00
+ * @Last modified time: 2018-01-27T14:05:01-08:00
  */
+
+const log = console.log;
+const chalk = require("chalk");
 const fs = require("fs-extra");
 const { fluent } = require("./helpers.js");
-function File(path) {
-  this.path = path;
-}
+const { template } = require("content-genesis");
 
-File.prototype.plain = fluent(content => {
-  fs.outputFile(this.path, content, err);
-});
-
-File.prototype.symlink = fluent(origin => {
-  fs.ensureSymlink(origin, this.path);
-});
+let File = filepath => {
+  this.filepath = filepath;
+  return {
+    plain: content => {
+      fs.outputFile(this.filepath, content, err => {
+        if (err) {
+          log(
+            `Failed to output ${chalk.yellow("<plain>")} file: ${chalk.yellow(
+              this.filepath
+            )} \n ${chalk.red(err)}`
+          );
+        }
+      });
+    },
+    symlink: origin => {
+      fs.ensureSymlink(origin, this.filepath, err => {
+        if (err) {
+          log(
+            `Failed to output ${chalk.yellow("symlink")} file: ${chalk.yellow(
+              this.filepath
+            )} \n ${chalk.red(err)}`
+          );
+        }
+      });
+    }
+  };
+};
 
 module.exports = {
   File
