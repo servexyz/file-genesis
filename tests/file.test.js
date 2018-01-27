@@ -3,7 +3,7 @@
  * @Date:   2018-01-04T12:43:32-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-26T16:20:19-08:00
+ * @Last modified time: 2018-01-26T16:28:11-08:00
  */
 
 const log = console.log;
@@ -40,6 +40,8 @@ test("File<symlink> created", () => {
   expect(lastSymlinkFileCreated).toBe(sDestination);
 });
 
+const tName = `sample.template.js`;
+const tPath = `${paths.T_SANDBOX}/${tName}`;
 //test mostly copied from content-genesis
 let expectedFooUgly = `
  import React from \"react\";
@@ -67,7 +69,7 @@ test("File<template> created", () => {
     template: require(paths.T_TEMPLATES_SAMPLE),
     variables: { component: "Foo" }
   };
-  createFile(filename, content);
+  createFile(tPath, content, "template");
 });
 
 beforeAll(() => {

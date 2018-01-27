@@ -3,7 +3,7 @@
  * @Date:   2018-01-08T14:13:42-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-26T16:13:39-08:00
+ * @Last modified time: 2018-01-26T16:23:02-08:00
  */
 
 const path = require("path");
@@ -36,6 +36,7 @@ const DB_CONFIG = require(DB_PATH)(CONFIG_HISTORY_DB);
 const DB_TEST = require(DB_PATH)(TEST_HISTORY_DB);
 
 module.exports = {
+  API: API,
   C_HISTORY: CONFIG_HISTORY_DB,
   C_TEMPLATES: CONFIG_TEMPLATES,
   C_T_DUPLICATES: CONFIG_TEMPLATES_DUPLICATES,
