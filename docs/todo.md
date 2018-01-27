@@ -11,6 +11,7 @@
 ## v.0.6
 
 * [ ] Extract db into its own module
+  * [ ] Figure out why history.json / sandbox.history.json is not being updated with template
 * [ ] Update ensureFile to outputFile (and add param for string)
 * [ ] Import content-genesis
 * [ ] Create cFileTemplate function

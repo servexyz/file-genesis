@@ -18,15 +18,16 @@
     "moment": "^2.20.1"
   },
   "devDependencies": {
-    "jest": "^22.0.4"
+    "jest": "^22.1.4",
+    "multiline": "^1.0.2"
   },
   "jest": {
     "verbose": true,
     "bail": false,
     "collectCoverage": false,
-    "modulePathIgnorePatterns": ["sandbox", "node_modules"]
-  },
-  "devDependencies": {
-    "multiline": "^1.0.2"
+    "modulePathIgnorePatterns": [
+      "sandbox",
+      "node_modules"
+    ]
   }
 }
