@@ -3,7 +3,7 @@
  * @Date:   2018-01-02T09:33:13-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-26T16:49:45-08:00
+ * @Last modified time: 2018-01-26T16:52:40-08:00
  */
 
 const fs = require("fs-extra");
@@ -67,7 +67,7 @@ function cFileTemplate(filename, content) {
   log(`content.template: \n ${content.template}`);
   log("content.variables", content.variables);
   log(`content.variables: \n ${content.variables}`);
-  let templateContent = template(content.template, content.variables);
+  let templateContent = template(String(content.template), content.variables);
   fs.outputFile(filename, templateContent, err => {
     if (err) {
       log(`cFileTemplate failed. ${chalk.red(err)}`);
