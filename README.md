@@ -8,7 +8,6 @@
 
 ```js
 yarn add file-genesis
-const { file } = require('file-genesis');
 ```
 
 ---
@@ -18,7 +17,17 @@ const { file } = require('file-genesis');
 ---
 
 ```js
+const path = require("path");
+const { file } = require("file-genesis");
+const gitignore = `
+  .DS_Store
+  node_modules
+`;
+
+file.create(path.join(__dirname, ".gitignore")).plain(gitignore);
 ```
+
+> Note: Prettier is used for formatting during creation
 
 ---
 
@@ -31,19 +40,30 @@ const { file } = require('file-genesis');
 > This is the root invocation
 
 ```js
-file.create(/path/and/file/name.ext)
+file.create("/path/and/file/name.ext");
 ```
 
 #### `.plain()`, `.symlink()`, `.template()`
 
 > This is used to specify the type and pass content
 
+**plain**
+
 ```js
+file.create("/path/to/file.ext").plain(<string>content)
 ```
 
-#### `.content()`
+**symlink**
 
-> This is appended to the
+```js
+file.create("/path/to/file.ext").symlink("/path/to/src", "/path/to/dest");
+```
+
+**template**
+
+```js
+file.create("/path/to/file.ext").template("path/to/template.ext", "variables");
+```
 
 ---
 

@@ -16,3 +16,9 @@
 * [ ] Import content-genesis
 * [ ] Create cFileTemplate function
 * [ ] Create helper method to simplify fs callbacks
+* [ ] Create directory function (for library later ?)
+
+## v1.0
+
+* [ ] Create accessor to override default prettier format
+  * [ ] Replicate this todo in content-genesis
