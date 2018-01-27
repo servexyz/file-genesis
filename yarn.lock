@@ -482,9 +482,9 @@ console-control-strings@^1.0.0, console-control-strings@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/console-control-strings/-/console-control-strings-1.1.0.tgz#3d7cf4464db6446ea644bf4b39507f9851008e8e"
 
-content-genesis@^0.5.1:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/content-genesis/-/content-genesis-0.5.2.tgz#b44ceb531e9713d3db43fcc462b69e1fae4cff3e"
+content-genesis@^0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/content-genesis/-/content-genesis-0.5.3.tgz#340235b2b3245edd0c034493a2ad39dae36ad7d1"
   dependencies:
     chalk "^2.3.0"
     multiline "^1.0.2"
