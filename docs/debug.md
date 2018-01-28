@@ -6,7 +6,7 @@
 
 ---
 
-* [ ] Regex error in template parsing
+* [x] Regex error in template parsing
       ![regex error](./images/regexAHP002.png)
       This could be an issue with multiline, except that multiline is working in content-genesis...
       This could also be an issue with content-genesis (likely problem). It's throwing on the path, which doesn't make a whole lot of sense... Hrm
