@@ -3,7 +3,7 @@
  * @Date:   2018-01-02T09:33:13-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-26T17:33:36-08:00
+ * @Last modified time: 2018-01-27T14:10:17-08:00
  */
 
 const fs = require("fs-extra");
@@ -63,10 +63,6 @@ function cFileSymlink(sourcePath, destinationPath) {
 function cFileTemplate(filename, content) {
   //content.template && content.variables
   const { template } = require("content-genesis");
-  log("content.template", content.template);
-  log(`content.template: \n ${content.template}`);
-  log("content.variables", content.variables);
-  log(`content.variables: \n ${content.variables}`);
   let templateContent = template(content.template, content.variables);
   fs.outputFile(filename, templateContent, err => {
     if (err) {

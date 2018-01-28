@@ -1,12 +1,25 @@
 # Debug
 
-## Interpolate templates plan
+---
 
 ### Issues
 
-![component is not defined](./images/interpolationAHP001.png)
+---
+
+* [x] Regex error in template parsing
+      ![regex error](./images/regexAHP002.png)
+      This could be an issue with multiline, except that multiline is working in content-genesis...
+      This could also be an issue with content-genesis (likely problem). It's throwing on the path, which doesn't make a whole lot of sense... Hrm
+      ---
+* [x] Component is not defined
+      ![component is not defined](./images/interpolationAHP001.png)
+      ---
+
+---
 
 ### Brainstorm
+
+---
 
 > See [todo](./todo.md) for action items
 > See [this](https://stackoverflow.com/questions/29182244/convert-a-string-to-a-template-string) for relevant discussion
