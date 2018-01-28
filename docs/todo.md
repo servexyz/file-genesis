@@ -10,15 +10,16 @@
 
 ## v.0.6
 
-* [ ] Extract db into its own module
+* [ ] `docs` Add section in README to explain how to create TEMPLATE
+* [ ] `src` Extract db into its own module
   * [ ] Figure out why history.json / sandbox.history.json is not being updated with template
-* [ ] Update ensureFile to outputFile (and add param for string)
-* [ ] Import content-genesis
-* [ ] Create cFileTemplate function
-* [ ] Create helper method to simplify fs callbacks
-* [ ] Create directory function (for library later ?)
+* [x] `src` Update ensureFile to outputFile (and add param for string)
+* [x] `src` Import content-genesis
+* [x] `src` Create cFileTemplate function
+* [ ] `src` Create helper method to simplify fs callbacks
+* [ ] `src` Create directory function wrapper (for library later ?)
 
 ## v1.0
 
-* [ ] Create accessor to override default prettier format
-  * [ ] Replicate this todo in content-genesis
+* [ ] `src` Create accessor to override default prettier format
+  * [ ] `src` Replicate this todo in content-genesis
