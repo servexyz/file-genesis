@@ -3,7 +3,7 @@
  * @Date:   2018-01-27T12:24:30-08:00
  * @Email:  alec@bubblegum.academy
  * @Last modified by:   alechp
- * @Last modified time: 2018-01-27T14:13:50-08:00
+ * @Last modified time: 2018-01-27T16:54:27-08:00
  */
 
 const log = console.log;
@@ -40,6 +40,7 @@ let File = filepath => {
       //TODO: Play around with async/await
       const { template } = require("content-genesis");
       let templateContent = template(original, variables);
+      log(`templateContent: ${chalk.blue(templateContent)}`);
       fs.outputFile(this.filepath, templateContent, err => {
         if (err) {
           log(`Failed to duplicate template. \n ${chalk.red(err)}`);
