@@ -11,6 +11,7 @@
 ## v.0.6
 
 * [ ] `docs` Add section in README to explain how to create TEMPLATE
+* [ ] `src` Update index, remove file
 * [ ] `src` Extract db into its own module
   * [ ] Figure out why history.json / sandbox.history.json is not being updated with template
 * [x] `src` Update ensureFile to outputFile (and add param for string)
