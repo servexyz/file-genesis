@@ -3,7 +3,7 @@
   "version": "0.5.1",
   "description": "Generate raw assets for other generators",
   "main": "index.js",
-  "repository": "git@alechp:servexyz/generator-generator-lib",
+  "repository": "git@alechp:servexyz/file-genesis",
   "author": "alechp <me@alechp.com>",
   "license": "MIT",
   "scripts": {
@@ -25,9 +25,6 @@
     "verbose": true,
     "bail": false,
     "collectCoverage": false,
-    "modulePathIgnorePatterns": [
-      "sandbox",
-      "node_modules"
-    ]
+    "modulePathIgnorePatterns": ["sandbox", "node_modules"]
   }
 }
