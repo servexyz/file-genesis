@@ -24,7 +24,8 @@ const gitignore = `
   node_modules
 `;
 
-File(filepathPlain).plain("foobar");
+let filepathPlain = path.join(__dirname, ".gitignore");
+File(filepathPlain).plain(gitignore);
 ```
 
 > Note: Prettier is used for formatting during creation
