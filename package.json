@@ -1,6 +1,6 @@
 {
   "name": "file-genesis",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "Generate raw assets for other generators",
   "main": "index.js",
   "repository": "git@alechp:servexyz/file-genesis",
