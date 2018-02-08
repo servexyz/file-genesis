@@ -90,3 +90,4 @@ File("/path/to/file.ext").template("path/to/template.ext", variables);
 ---
 
 * `content-genesis` [@github](https://github.com/servexyz/content-genesis) | [@npm](https://www.npmjs.com/package/content-genesis)
+* `library-genesis` [@github](https://github.com/servexyz/library-genesis) | [@npm](https://www.npmjs.com/package/library-genesis)
