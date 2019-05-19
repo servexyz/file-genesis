@@ -1,4 +1,4 @@
-# file-genesis
+![logo](docs/images/logo/file-genesis@2x.png)
 
 [![Build Status](https://travis-ci.org/servexyz/file-genesis.svg?branch=master)](https://travis-ci.org/servexyz/file-genesis)
 
