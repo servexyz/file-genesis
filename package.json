@@ -18,7 +18,7 @@
     "moment": "^2.20.1"
   },
   "devDependencies": {
-    "jest": "^22.1.4",
+    "jest": "^24.8.0",
     "multiline": "^1.0.2"
   },
   "jest": {
