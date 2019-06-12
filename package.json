@@ -7,7 +7,7 @@
   "author": "alechp <me@alechp.com>",
   "license": "MIT",
   "scripts": {
-    "test": "jest"
+    "test": "ava"
   },
   "dependencies": {
     "chalk": "^2.3.0",
@@ -18,16 +18,22 @@
     "moment": "^2.20.1"
   },
   "devDependencies": {
-    "jest": "^24.8.0",
+    "@babel/core": "^7.4.5",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/register": "^7.4.4",
+    "ava": "^2.1.0",
     "multiline": "^1.0.2"
   },
-  "jest": {
-    "verbose": true,
-    "bail": false,
-    "collectCoverage": false,
-    "modulePathIgnorePatterns": [
-      "sandbox",
-      "node_modules"
-    ]
+  "ava": {
+    "files": [
+      "!npm-starter-sample-module/**/*.js",
+      "tests/**/*.test.js"
+    ],
+    "require": [
+      "@babel/register",
+      "@babel/polyfill"
+    ],
+    "verbose": true
   }
 }

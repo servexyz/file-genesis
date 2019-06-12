@@ -1,11 +1,12 @@
 /**
  * @Author: Alec Hale-Pletka <alechp>
  * @Date:   2018-01-04T12:43:32-08:00
- * @Email:  alec@bubblegum.academy
+ * @Email:  me@alechp.com
  * @Last modified by:   alechp
  * @Last modified time: 2018-01-29T16:29:36-08:00
  */
 
+import test from "ava";
 const log = console.log;
 const path = require("path");
 const chalk = require("chalk");
@@ -45,14 +46,15 @@ let filepathPlain = `${paths.T_SANDBOX}/plain.js`;
 let filepathSymlink = `${paths.T_SANDBOX}/symlink.js`;
 let filepathTemplate = `${paths.T_SANDBOX}/template.js`;
 
-test("files<[plain, symlink, template]> created", () => {
+test.before(t => {
+  fs.removeSync(paths.T_SANDBOX);
+});
+
+test("files<[plain, symlink, template]> created", t => {
   const { File } = require(paths.API);
   File(filepathPlain).plain("foobar");
   File(filepathSymlink).symlink(paths.API);
   let variables = { component: "FooBar" };
   File(filepathTemplate).template(paths.T_TEMPLATES_SAMPLE, variables);
-});
-
-beforeAll(() => {
-  fs.removeSync(paths.T_SANDBOX);
+  t.pass();
 });

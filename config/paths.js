@@ -1,7 +1,7 @@
 /**
  * @Author: Alec Hale-Pletka <alechp>
  * @Date:   2018-01-08T14:13:42-08:00
- * @Email:  alec@bubblegum.academy
+ * @Email:  me@alechp.com
  * @Last modified by:   alechp
  * @Last modified time: 2018-01-26T16:23:02-08:00
  */
