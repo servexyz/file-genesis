@@ -7,7 +7,9 @@
   "author": "alechp <me@alechp.com>",
   "license": "MIT",
   "scripts": {
-    "test": "ava"
+    "test": "ava",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "chalk": "^2.3.0",
@@ -15,7 +17,8 @@
     "fs-extra": "^5.0.0",
     "is-empty": "^1.2.0",
     "lowdb": "^1.0.0",
-    "moment": "^2.20.1"
+    "moment": "^2.20.1",
+    "snyk": "^1.193.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -35,5 +38,6 @@
       "@babel/polyfill"
     ],
     "verbose": true
-  }
+  },
+  "snyk": true
 }
