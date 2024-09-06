@@ -16,7 +16,7 @@
     "content-genesis": "^0.5.4",
     "fs-extra": "^5.0.0",
     "is-empty": "^1.2.0",
-    "lowdb": "^1.0.0",
+    "lowdb": "^2.0.0",
     "moment": "^2.20.1",
     "snyk": "^1.193.1"
   },
